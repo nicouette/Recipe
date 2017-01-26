@@ -5,31 +5,31 @@
     <meta charset="utf-8" />
     <title>Recettes Ajout </title>
     <script>
-    let ingredientDivId = 1
-    function addLine() {
-       const ingredientDiv = document.getElementById('ingredient')
-       const ingredientNew = document.createElement ('p')
-       ingredientNew.setAttribute ('id','ingredientDiv'+ ingredientDivId)
-       ingredientNew.innerHTML = `<label for="Ingrédient${ingredientDivId}">Ingrédient : </label>
+        let ingredientDivId = 1
+        function addLine() {
+            const ingredientDiv = document.getElementById('ingredient')
+            const ingredientNew = document.createElement('p')
+            ingredientNew.setAttribute('id', 'ingredientDiv' + ingredientDivId)
+            ingredientNew.innerHTML = `<label for="Ingrédient${ingredientDivId}">Ingrédient : </label>
                 <input type="text" name="Ingrédient" id="Ingrédient${ingredientDivId}"/>
                 <label for="Quantité${ingredientDivId}">Quantité : </label>
                 <input type="text" name="Quantité" id="Quantité${ingredientDivId}" />
                 <label for="Unité${ingredientDivId}">Unité : </label>
                 <input type="text" name="Unité" id="Unité${ingredientDivId}" />
-                <input type="button" name="Retrait" id="Retrait" value="-" onClick="removeLine('ingredientDiv${ingredientDivId}')"/>`
-       ingredientDiv.appendChild (ingredientNew)
-       ingredientDivId++
-    }
-    function removeLine(selectedIngredientId){
-        document.getElementById(selectedIngredientId).remove()
-    }
-</script>
+                <input type="button" name="Retrait" id="Retrait${ingredientDivId}" value="-" onClick="removeLine('ingredientDiv${ingredientDivId}')"/>`
+            ingredientDiv.appendChild(ingredientNew)
+            ingredientDivId++
+        }
+        function removeLine(selectedIngredientId) {
+            document.getElementById(selectedIngredientId).remove()
+        }
+    </script>
 </head>
 
 <body>
     <h1>Recette de Sandra, bon appétit !</h1>
     <p>
-        <form method="post" action="addRecette.js">
+        <form method="post" action="addRecette">
             <p>
                 <label for="Nom">Nom :</label>
                 <input type="text" name="Nom" id="Nom" maxlength="200" />
@@ -38,13 +38,27 @@
                 <label for="Description">Description : </label>
                 <textarea name="Description" id="Description" rows="10" cols="50"> </textarea>
             </p>
+            <p>
+                <label for="Type">Type de recette : </label>
+                <select name="Type" id="Type">
+                    <option value="apéritif">Apéritif</option>
+                    <option value="entrée">Entrée</option>
+                    <option value="viande">Viande</option>
+                    <option value="poisson">Poisson</option>
+                    <option value="légume">Légume</option>
+                    <option value="pâte">Pâte</option>
+                    <option value="riz">Riz</option>
+                    <option value="fromage">Fromage</option>
+                    <option value="dessert">Dessert</option>
+                    </select>
+            </p>
             <input type="button" name="Ajout" id="Ajout" value="Ajouter un ingrédient" onClick="addLine()"/>
-            <div id="ingredient">
-                <script>addLine ()</script>
-            </div>
-                <div class="button">
-                     <button type="submit">Ajouter la recette</button>
-                </div>
+<div id="ingredient">
+    <script>addLine()</script>
+</div>
+<div class="button">
+    <button type="submit">Ajouter la recette</button>
+</div>
 </form>
 </p>
 </body>

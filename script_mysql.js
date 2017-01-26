@@ -44,7 +44,12 @@ function getRecipie(id, callback) {
   })
 }
 
+function addRecipie(nom,description,type,callback){
+  // exeQuery a 2 parameters: la query - ici un insert et le callback -pour me dire que c'est fini
+  exeQuery(`insert into Recettes (nom,description,type) Values('${nom}','${description}','${type}')`,callback)
+}
+
 module.exports = {
-  getAllRecipies, getRecipie
+  getAllRecipies, getRecipie, addRecipie
 };
 
