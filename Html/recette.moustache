@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Recettes Description</title>
+</head>
+
+<body>
+<h1>Recette de {{nom}}</h1>
+<p>
+
+Réalisation :<br/>
+ {{description}}
+<p>
+Ingrédients :
+<ul>
+   {{#each ingredients}}
+<li> {{nom}} : {{quantité}}{{unité}}</li> 
+    {{/each}}   
+</ul>
+</p>
+<p> Retour <a href="resultat">à la page de résultats </a></p>
+<p> Retour <a href="/">à l'accueil</a></p>
+</body>
+</html>

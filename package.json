@@ -1,0 +1,18 @@
+{
+  "name": "projet_recette",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon -e js,html,json,moustache --watch  Html --watch . index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "sandra",
+  "license": "ISC",
+  "dependencies": {
+    "handlebars": "^4.0.6",
+    "mysql": "^2.12.0",
+    "nodemon": "^1.11.0",
+    "qs": "^6.3.0"
+  }
+}
