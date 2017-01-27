@@ -81,10 +81,16 @@ const server = http.createServer((req, res) => {
 			console.log(req.body);
 			//function() = function de mon callback : je veux que ca termine le requete http donc res.write et res.end
 			//je mets Mysql devant le nom de la fonction que j'appelle car la fonction a été défini dans un autre module définit par la variable Mysql
-			Mysql.addRecipie(req.body.Nom, req.body.Description,req.body.Type, function () {
+			Mysql.addRecipie(req.body.Nom, req.body.Description,req.body.Type, function (recetteId) {
+			Mysql.addIngredients(req.body.Ingrédient,function(){
+			Mysql.addQuantitesUnites(recetteId,req.body.Ingrédient,req.body.Quantité,req.body.Unité,function(){
+			//	console.log(req.body);	
 				res.write('enregistrement fini')
 				res.end();
-			});
+			})
+			})
+			})
+
 
 
 
