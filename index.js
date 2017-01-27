@@ -81,14 +81,34 @@ const server = http.createServer((req, res) => {
 			console.log(req.body);
 			//function() = function de mon callback : je veux que ca termine le requete http donc res.write et res.end
 			//je mets Mysql devant le nom de la fonction que j'appelle car la fonction a été défini dans un autre module définit par la variable Mysql
-			Mysql.addRecipie(req.body.Nom, req.body.Description,req.body.Type, function (recetteId) {
-			Mysql.addIngredients(req.body.Ingrédient,function(){
-			Mysql.addQuantitesUnites(recetteId,req.body.Ingrédient,req.body.Quantité,req.body.Unité,function(){
-			//	console.log(req.body);	
-				res.write('enregistrement fini')
-				res.end();
-			})
-			})
+			Mysql.addRecipie(req.body.Nom, req.body.Description, req.body.Type, function (recetteId) {
+				let ingredients, quantites, unites
+				if (req.body.addIngredients === undefined)			
+					{// j'exe addIngredient. si on a 0 ingrédient on veut que rien ne se fasse
+						ingredients = []
+						quantites = []
+						unites = []
+					}
+				else if (Array.isArray(req.body.Ingrédient)) {
+					// j'exe addIngredients
+					ingredients = req.body.Ingrédient
+					quantites = req.body.Quantité
+					unites = req.body.Unité
+				}
+
+				else {// j'exe addIngredient. si on a qu'1 ingrédient on transforme la valeur en tableau et on met le résultat dans notre variable
+					ingredients = [req.body.Ingrédient]
+					quantites = [req.body.Quantité]
+					unites = [req.body.Unité]
+				}
+				// j'utilise la fonction dans la suite
+				Mysql.addIngredients(ingredients, function () {
+					Mysql.addQuantitesUnites(recetteId, ingredients, quantites, unites, function () {
+						//	console.log(req.body);	
+						res.write('enregistrement fini')
+						res.end();
+					})
+				})
 			})
 
 
