@@ -32,7 +32,7 @@
         <form method="post" action="addRecette">
             <p>
                 <label for="Nom">Nom :</label>
-                <input type="text" name="Nom" id="Nom" maxlength="200" />
+                <input type="text" name="Nom" id="Nom" maxlength="200" required />
             </p>
             <p>
                 <label for="Description">Description : </label>
@@ -54,7 +54,7 @@
             </p>
             <input type="button" name="Ajout" id="Ajout" value="Ajouter un ingrédient" onClick="addLine()"/>
 <div id="ingredient">
-    <script>addLine()</script>
+<!--  script>addLine()</script -->
 </div>
 <div class="button">
     <button type="submit">Ajouter la recette</button>
