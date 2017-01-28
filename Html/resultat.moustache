@@ -7,17 +7,17 @@
 <body>
 <h1>Recettes de Sandra, bon appétit !</h1>
 <p>
-Voici les résultats qui correspondent à votre recherche:
+<!-- Voici les résultats qui correspondent à votre recherche:-->
 
-<table border=solid>
+<table >
    <tr>
-       <th>Nom</th>
+       <th width="500px">Nom</th>
 	   <th>Type</th>
        <th>Photo</th>
    </tr>
    {{#each lines}}
    <tr>
-       <td><a href="recette?id={{id}}">{{nom}}</a></td>
+       <td  width="500px"><a href="recette?id={{id}}">{{nom}}</a></td>
 	   <td>{{type}}</td>
        <td></td>
    </tr> 
