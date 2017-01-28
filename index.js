@@ -17,9 +17,9 @@ const http = require('http');
 const accueil = fs.readFileSync(path.join(__dirname, 'Html', 'accueil.html'));
 const accueil_image = fs.readFileSync(path.join(__dirname, 'Html', 'image.png'));
 //on lit le fichier template 
-const resultat = fs.readFileSync(path.join(__dirname, 'Html', 'resultat.moustache'));
+const resultat = fs.readFileSync(path.join(__dirname, 'Html', 'resultat.handlebars'));
 //on lit la page recette - ici recette.html est le nom du fichier
-const recette = fs.readFileSync(path.join(__dirname, 'Html', 'recette.moustache'));
+const recette = fs.readFileSync(path.join(__dirname, 'Html', 'recette.handlebars'));
 const ajoutRecette = fs.readFileSync(path.join(__dirname, 'Html', 'ajoutRecette.html'));
 
 //on utilise library qui va le mettre ready to be used - pas de résultats 
@@ -44,7 +44,7 @@ const server = http.createServer((req, res) => {
 
 
 
-	} else if (req.url === '/resultat') {
+	} else if (parsedUrl.pathname === '/resultat') {
 		Mysql.getAllRecipies(function (results) {
 			const context = {
 				lines: results
