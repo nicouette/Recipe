@@ -13,7 +13,7 @@
             ingredientNew.innerHTML = `<label for="Ingrédient${ingredientDivId}">Ingrédient : </label>
                 <input type="text" name="Ingrédient" id="Ingrédient${ingredientDivId}"/>
                 <label for="Quantité${ingredientDivId}">Quantité : </label>
-                <input type="number" name="Quantité" id="Quantité${ingredientDivId}" required />
+                <input type="number" step="any" name="Quantité" id="Quantité${ingredientDivId}" required />
                 <label for="Unité${ingredientDivId}">Unité : </label>
                 <input type="text" name="Unité" id="Unité${ingredientDivId}" />
                 <input type="button" name="Retrait" id="Retrait${ingredientDivId}" value="-" onClick="removeLine('ingredientDiv${ingredientDivId}')"/>`
