@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon -e js,html,json,moustache --watch  Html --watch . index.js",
+    "start": "nodemon -e js,html,json,handlebars --watch  Html --watch . index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "sandra",

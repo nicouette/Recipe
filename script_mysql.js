@@ -41,11 +41,12 @@ function getAllRecipies(callback) {
   exeQuery('select * from recettes', undefined, callback)
 }
 
-
+// fonction pour récupérer une recette spécifique et pouvoir l'afficher
 function getRecipie(id, callback) {
   const results = {}
   // on veut échapper le resultat de la query (caractères spéciaux) alors on utilise id=:id, {id} qui est le paramètre Values de exeQuery l.4
-  exeQuery('select nom, description from recettes where id =:id', { id }, function (resSelectedRecette) {
+  exeQuery('select id, nom, description from recettes where id =:id', { id }, function (resSelectedRecette) {
+    results.id = resSelectedRecette[0].id
     results.nom = resSelectedRecette[0].nom
     results.description = resSelectedRecette[0].description
     // query pour pouvoir afficher les ingrédients, quantité et unité associés
@@ -115,7 +116,18 @@ function addQuantitesUnites(recetteId, nomIngredients, quantites, unites, callba
 
 }
 
+function removeRecipie(id, callback) {
+
+exeQuery('delete from recettes_ingredients where recette_id=:id', { id }, function (){
+  console.log ('tu as perdu')
+  exeQuery('delete from recettes where id=:id', { id }, callback)
+
+}
+)
+}
+
+
 module.exports = {
-  getAllRecipies, getRecipie, addRecipie, addIngredient, addIngredients, addQuantiteUnite, addQuantitesUnites
+  getAllRecipies, getRecipie, addRecipie, addIngredient, addIngredients, addQuantiteUnite, addQuantitesUnites, removeRecipie
 };
 

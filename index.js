@@ -22,6 +22,8 @@ const resultat = fs.readFileSync(path.join(__dirname, 'Html', 'resultat.handleba
 const recette = fs.readFileSync(path.join(__dirname, 'Html', 'recette.handlebars'));
 const ajoutRecette = fs.readFileSync(path.join(__dirname, 'Html', 'ajoutRecette.html'));
 
+const confirmation = fs.readFileSync(path.join(__dirname, 'Html', 'confirmation.html'));
+
 //on utilise library qui va le mettre ready to be used - pas de résultats 
 const template_resultat = Handlebars.compile(resultat.toString());
 // compilation du template
@@ -42,8 +44,6 @@ const server = http.createServer((req, res) => {
 		res.write(accueil_image);
 		res.end();
 
-
-
 	} else if (parsedUrl.pathname === '/resultat') {
 		Mysql.getAllRecipies(function (results) {
 			const context = {
@@ -54,8 +54,6 @@ const server = http.createServer((req, res) => {
 			res.end();
 		}
 		)
-
-
 		// ici /recette ce n'est pas la page mais l'url - doit être identique à celle définit dans resultat.moustache
 		// avec parsedUrl je n'ai que /recette qui est pris en compte dans url et pas l'id (search)
 	} else if (parsedUrl.pathname === '/recette') {
@@ -83,19 +81,17 @@ const server = http.createServer((req, res) => {
 			//je mets Mysql devant le nom de la fonction que j'appelle car la fonction a été défini dans un autre module définit par la variable Mysql
 			Mysql.addRecipie(req.body.Nom, req.body.Description, req.body.Type, function (recetteId) {
 				let ingredients, quantites, unites
-				if (req.body.addIngredients === undefined)			
-					{// j'exe addIngredient. si on a 0 ingrédient on veut que rien ne se fasse
-						ingredients = []
-						quantites = []
-						unites = []
-					}
+				if (req.body.addIngredients === undefined) {// j'exe addIngredient. si on a 0 ingrédient on veut que rien ne se fasse
+					ingredients = []
+					quantites = []
+					unites = []
+				}
 				else if (Array.isArray(req.body.Ingrédient)) {
 					// j'exe addIngredients
 					ingredients = req.body.Ingrédient
 					quantites = req.body.Quantité
 					unites = req.body.Unité
 				}
-
 				else {// j'exe addIngredient. si on a qu'1 ingrédient on transforme la valeur en tableau et on met le résultat dans notre variable
 					ingredients = [req.body.Ingrédient]
 					quantites = [req.body.Quantité]
@@ -107,24 +103,27 @@ const server = http.createServer((req, res) => {
 						//	console.log(req.body);	
 						res.write('enregistrement fini')
 						res.end();
-					})
+					}
+					)
 				})
-			})
+			}
+			)
+				}
+			)
 
-
-
-
-		})
-
-
-	}
-
-	else {
-		res.write('Wrong url');
-		res.end();
-	}
-
-});
+		} else if (parsedUrl.pathname === '/suppressionRecette') {
+			// parsedUrl.query.id permet de récupérer l'id de la recette 
+			Mysql.removeRecipie(parsedUrl.query.id, function () {
+				//	console.log(req.body)	
+				res.write(confirmation)
+				res.end();
+			}
+			)
+		} else {
+			res.write('Wrong url');
+			res.end();
+		}
+	});
 //start server
 server.listen(8080);
 
