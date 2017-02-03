@@ -10,6 +10,7 @@ const Handlebars = require('handlebars')
 const Mysql = require('./script_mysql')
 
 const addRecette = require('./controllers/addRecette')
+const suppressionRecette = require('./controllers/suppressionRecette')
 
 const bodyParser = require('body-parser')
 
@@ -24,7 +25,7 @@ const resultat = fs.readFileSync(path.join(__dirname, 'Html', 'resultat.handleba
 const recette = fs.readFileSync(path.join(__dirname, 'Html', 'recette.handlebars'))
 const ajoutRecette = fs.readFileSync(path.join(__dirname, 'Html', 'ajoutRecette.html'))
 
-const confirmation = fs.readFileSync(path.join(__dirname, 'Html', 'confirmation.html'))
+
 // module fs utilisé, j'appele une fonction pour lire le fichier
 const style = fs.readFileSync(path.join(__dirname, 'Html', 'style.css'))
 const styleRecette = fs.readFileSync(path.join(__dirname, 'Html', 'style_recette.css'))
@@ -81,13 +82,8 @@ const server = http.createServer((req, res) => {
     res.write(styleRecette)
     res.end()
   } else if (parsedUrl.pathname === '/suppressionRecette') {
-    // parsedUrl.query.id permet de récupérer l'id de la recette
-    Mysql.removeRecipie(parsedUrl.query.id, () => {
-      //	console.log(req.body)
-      res.write(confirmation)
-      res.end()
-    }
-    )
+      // parsedUrl.query.id permet de récupérer l'id de la recette
+    suppressionRecette(req, res, parsedUrl.query.id)
   } else {
     res.statusCode = 404
     res.write('Wrong url')
