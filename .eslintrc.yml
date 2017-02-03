@@ -1,0 +1,41 @@
+env:
+  es6: true
+  node: true
+extends: 'airbnb/base'
+rules:
+  indent:
+    - 2
+    - 2
+    - SwitchCase: 1
+  object-curly-spacing:
+    - 2
+    - never
+  max-len:
+    - 1
+    - code: 140
+  comma-dangle:
+    - 1
+    - never
+  no-use-before-define:
+    - 0
+  no-param-reassign:
+    - 0
+  arrow-parens:
+    - 0
+  no-multiple-empty-lines:
+    - 2
+    - max: 1
+  space-before-function-paren:
+    - 2
+    - named: always
+  complexity:
+    - 2
+    - max: 10
+  max-depth:
+    - 2
+    - max: 3
+  semi:
+    - 2
+    - never
+  no-underscore-dangle:
+    - 0
