@@ -75,7 +75,7 @@ const server = http.createServer((req, res) => {
 		//retourne une fonction qui prend 3 param.: req. http, res.http,callback
 		//sert à extraire le body du reste.
 		const parseBody = bodyParser.urlencoded({ extended: false })
-		//parseBody est asynchrone, quand il rend la main il n'a pas été exe. callback est appelé quand réellement parseBody aura fini de faire le travail
+		//parseBody est asynchrone-je recupere des elements de la requete http, quand il rend la main il n'a pas été exe. callback est appelé quand réellement parseBody aura fini de faire le travail
 		parseBody(req, res, function () {
 			// je vois le body qui est extrait dans cmd (log du serveur!)
 			console.log(req.body);
@@ -83,7 +83,7 @@ const server = http.createServer((req, res) => {
 			//je mets Mysql devant le nom de la fonction que j'appelle car la fonction a été défini dans un autre module définit par la variable Mysql
 			Mysql.addRecipie(req.body.Nom, req.body.Description, req.body.Type, function (recetteId) {
 				let ingredients, quantites, unites
-				if (req.body.addIngredients === undefined) {// j'exe addIngredient. si on a 0 ingrédient on veut que rien ne se fasse
+				if (req.body.Ingrédient === undefined) {// j'exe addIngredient. si on a 0 ingrédient on veut que rien ne se fasse
 					ingredients = []
 					quantites = []
 					unites = []
@@ -110,31 +110,31 @@ const server = http.createServer((req, res) => {
 				})
 			}
 			)
-				}
-			)
-
 		}
-		//style.css est une page , je l'appelle avec la variable style définie plus haut
-		else if (req.url === '/style.css') {
+		)
+
+	}
+	//style.css est une page , je l'appelle avec la variable style définie plus haut
+	else if (req.url === '/style.css') {
 		res.write(style);
 		res.end();
 
-	} 
-		
-		 else if (parsedUrl.pathname === '/suppressionRecette') {
-			// parsedUrl.query.id permet de récupérer l'id de la recette 
-			Mysql.removeRecipie(parsedUrl.query.id, function () {
-				//	console.log(req.body)	
-				res.write(confirmation)
-				res.end();
-			}
-			)
-		} else {
-			res.statusCode=404;
-			res.write('Wrong url');
+	}
+
+	else if (parsedUrl.pathname === '/suppressionRecette') {
+		// parsedUrl.query.id permet de récupérer l'id de la recette 
+		Mysql.removeRecipie(parsedUrl.query.id, function () {
+			//	console.log(req.body)	
+			res.write(confirmation)
 			res.end();
 		}
-	});
+		)
+	} else {
+		res.statusCode = 404;
+		res.write('Wrong url');
+		res.end();
+	}
+});
 //start server
 server.listen(8080);
 
