@@ -27,16 +27,20 @@
 </head>
 
 <body>
-    <h1>Recette de Sandra, bon appétit !</h1>
+    <h1>Recettes de Sandra, bon appétit !</h1>
     <p>
+
         <form method="post" action="addRecette">
+              <div class="button">
+    <button type="submit">Ajouter la recette</button>
+</div>      
             <p>
                 <label for="Nom">Nom :</label>
                 <input type="text" name="Nom" id="Nom" maxlength="200" required />
             </p>
             <p>
                 <label for="Description">Description : </label>
-                <textarea name="Description" id="Description" rows="10" cols="50"> </textarea>
+                <textarea name="Description" id="Description" rows="10" cols="50">Entrez la description de votre recette. </textarea>
             </p>
             <p>
                 <label for="Type">Type de recette : </label>
@@ -50,15 +54,14 @@
                     <option value="riz">Riz</option>
                     <option value="fromage">Fromage</option>
                     <option value="dessert">Dessert</option>
+                    <option value="dessert">Biscuit</option>
                     </select>
             </p>
             <input type="button" name="Ajout" id="Ajout" value="Ajouter un ingrédient" onClick="addLine()"/>
 <div id="ingredient">
 <!--  script>addLine()</script -->
 </div>
-<div class="button">
-    <button type="submit">Ajouter la recette</button>
-</div>
+
 </form>
 </p>
 <p>

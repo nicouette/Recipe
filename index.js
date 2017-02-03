@@ -23,6 +23,8 @@ const recette = fs.readFileSync(path.join(__dirname, 'Html', 'recette.handlebars
 const ajoutRecette = fs.readFileSync(path.join(__dirname, 'Html', 'ajoutRecette.html'));
 
 const confirmation = fs.readFileSync(path.join(__dirname, 'Html', 'confirmation.html'));
+// module fs utilisé, j'appele une fonction pour lire le fichier
+const style = fs.readFileSync(path.join(__dirname, 'Html', 'style.css'));
 
 //on utilise library qui va le mettre ready to be used - pas de résultats 
 const template_resultat = Handlebars.compile(resultat.toString());
@@ -111,7 +113,15 @@ const server = http.createServer((req, res) => {
 				}
 			)
 
-		} else if (parsedUrl.pathname === '/suppressionRecette') {
+		}
+		//style.css est une page , je l'appelle avec la variable style définie plus haut
+		else if (req.url === '/style.css') {
+		res.write(style);
+		res.end();
+
+	} 
+		
+		 else if (parsedUrl.pathname === '/suppressionRecette') {
 			// parsedUrl.query.id permet de récupérer l'id de la recette 
 			Mysql.removeRecipie(parsedUrl.query.id, function () {
 				//	console.log(req.body)	
@@ -120,6 +130,7 @@ const server = http.createServer((req, res) => {
 			}
 			)
 		} else {
+			res.statusCode=404;
 			res.write('Wrong url');
 			res.end();
 		}
