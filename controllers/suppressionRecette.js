@@ -1,3 +1,4 @@
+// fonction entre autre pour lire les fichiers avec fs
 const fs = require('fs')
 const Mysql = require('../script_mysql')
 const path = require('path')

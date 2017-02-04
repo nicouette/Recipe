@@ -13,7 +13,7 @@
             ingredientNew.innerHTML = `<label for="Ingrédient${ingredientDivId}">Ingrédient : </label>
                 <input type="text" name="Ingrédient" id="Ingrédient${ingredientDivId}"/>
                 <label for="Quantité${ingredientDivId}">Quantité : </label>
-                <input type="number" step="any" name="Quantité" id="Quantité${ingredientDivId}" required />
+                <input type="number" step="any" name="Quantité" id="Quantité${ingredientDivId}" required/>
                 <label for="Unité${ingredientDivId}">Unité : </label>
                 <input type="text" name="Unité" id="Unité${ingredientDivId}" />
                 <input type="button" name="Retrait" id="Retrait${ingredientDivId}" value="-" onClick="removeLine('ingredientDiv${ingredientDivId}')"/>`
@@ -31,9 +31,9 @@
     <p>
 
         <form method="post" action="addRecette">
-              <div class="button">
+<div class="button">
     <button type="submit">Ajouter la recette</button>
-</div>      
+</div>
             <p>
                 <label for="Nom">Nom :</label>
                 <input type="text" name="Nom" id="Nom" maxlength="200" required />
@@ -54,21 +54,19 @@
                     <option value="riz">Riz</option>
                     <option value="fromage">Fromage</option>
                     <option value="dessert">Dessert</option>
-                    <option value="dessert">Biscuit</option>
+                    <option value="biscuit">Biscuit</option>
                     </select>
             </p>
             <input type="button" name="Ajout" id="Ajout" value="Ajouter un ingrédient" onClick="addLine()"/>
 <div id="ingredient">
-<!--  script>addLine()</script -->
+<!--si je garde ligne suivante alors j'ai 1 ligne ingrédient par défaut. nous choisisons de ne pas avoir de ligne ingredient par défaut-->
+<!--script>addLine()</script-->
 </div>
 
 </form>
 </p>
-<p>
-  
-<p> Retour <a href="/"> à l'accueil</a></p>
-  
-</p>
+    <p> Retour <a href="/"> à l'accueil</a></p>
+
 </body>
 
 </html>

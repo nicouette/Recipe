@@ -1,0 +1,37 @@
+.body
+{
+    background:url("image.png");
+    background-position: top right;
+}
+
+.title
+{
+    color: blue;
+}
+.intro
+{
+    color: indianred;
+    text-align: justify;
+    font-size: 35px;
+    font-style: italic;
+
+}
+p
+{
+    color: darkblue;
+    text-align: justify;
+    font-size: medium;
+    font-family: "Georgia" ;
+
+
+}
+
+.image
+{
+display:block;
+max-width: 10%;
+	height: 10%;
+}
+
+
+

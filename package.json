@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon -e js,html,json,handlebars,css --watch  Html --watch . index.js",
+    "start": "nodemon -e js,html,json,handlebars,css --watch  Html --watch . --watch pub index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "sandra",
@@ -16,6 +16,7 @@
     "eslint-plugin-import": "^2.2.0",
     "handlebars": "^4.0.6",
     "mysql": "^2.12.0",
+    "node-static": "^0.7.9",
     "nodemon": "^1.11.0",
     "qs": "^6.3.0"
   }
