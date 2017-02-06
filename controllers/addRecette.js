@@ -1,5 +1,9 @@
 const bodyParser = require('body-parser')
 const Mysql = require('../script_mysql')
+const fs = require('fs')
+const path = require('path')
+
+const confirmationAjout = fs.readFileSync(path.join(__dirname, '..', 'Html', 'confirmation2.html'))
 
 function addRecette (req, res) {
   // on veut communiquer avec la base les valeurs étant dans la requete - donc récupérer les infos de la requete pour les envoyer à la base.
@@ -35,7 +39,7 @@ function addRecette (req, res) {
       Mysql.addIngredients(ingredients, () => {
         Mysql.addQuantitesUnites(recetteId, ingredients, quantites, unites, () => {
           // console.log(req.body)
-          res.write('enregistrement fini')
+          res.write(confirmationAjout)
           res.end()
         }
         )
