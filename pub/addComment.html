@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Commentaires</title>
+</head>
+<!-- au chargement de la page, la  fonction recup est exécutée-->
+<body onLoad="Recup()">
+
+<script>
+  //fonction qui permet de parser l'url et nous sera utile pour recupérer l'id de la recette sur laquelle on veut faire un commentaire
+  function getParameterByName(name, url) {
+    if (!url) {
+      url = window.location.href;
+    }
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+      results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+  }
+  // quand la page addComment se charge je veux pouvoir récupérer les valeurs id et type qui sont dans input type hidden
+  function Recup() {
+    const id = getParameterByName('id');
+    const type = getParameterByName('type');
+    console.log(id, type)
+    const inputId = document.getElementById('id')
+    inputId.value = id
+    const inputType = document.getElementById('type')
+    inputType.value = type
+  }
+
+</script>
+<h1>
+  Commentaires
+</h1>
+<h3>
+  Veuillez saisir votre commentaires en prenant soin d'indiquer un titre et un type de commentaire, c'est à dire s'il concerne
+  une recette ou un ingrédient.
+</h3>
+<form method="post" action="/addComments">
+  <p>
+    <label for="Titre">Titre :</label>
+    <input type="text" name="Titre" id="Titre" maxlength="200" required />
+  </p>
+  <p>
+    <label for="Description">Description : </label>
+    <textarea name="Description" id="Description" rows="10" cols="50" placeholder="Entrez votre commentaire."></textarea>
+  </p>
+
+  <input type="hidden" name="type" id="type" />
+  <input type="hidden" name="id" id="id" />
+  <div class="button">
+    <button type="submit">Ajouter le commentaire</button>
+  </div>
+</form>
+</body>
+
+</html>

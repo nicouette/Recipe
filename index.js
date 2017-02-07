@@ -5,6 +5,7 @@ const addRecette = require('./controllers/addRecette')
 const suppressionRecette = require('./controllers/suppressionRecette')
 const resultat = require('./controllers/resultat')
 const viewRecette = require('./controllers/viewRecette')
+const addComment = require('./controllers/addComments')
 
 // retrieve http module
 const http = require('http')
@@ -28,6 +29,8 @@ const server = http.createServer((req, res) => {
   } else if (parsedUrl.pathname === '/suppressionRecette') {
     // parsedUrl.query.id permet de récupérer l'id de la recette
     suppressionRecette(req, res, parsedUrl.query.id)
+  } else if (parsedUrl.pathname === '/addComments') {
+    addComment(req, res)
   } else {
     // sinon c'est le serveur static qui gère
     req.addListener('end', () => {

@@ -2,32 +2,45 @@
 <html>
 
 <head>
-    <meta charset="utf-8" />
-      <link rel="stylesheet" href="css/style_recette.css" />
-    <title>Recettes Description</title>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="css/style_recette.css" />
+  <title>Recettes Description</title>
 </head>
 
 <body>
-    <h1>Recette de {{nom}}</h1>
+  <h1>Recette de {{nom}}</h1>
+  <p>
+
+    Réalisation :<br/>{{description}}
+    <p>
+      Ingrédients :
+      <ul>
+        {{#each ingredients}}
+        <li> {{nom}} : {{quantité}}{{unité}}</li>
+        {{/each}}
+      </ul>
+    </p>
     <p>
 
-        Réalisation :<br/>{{description}}
-        <p>
-            Ingrédients :
-            <ul>
-                {{#each ingredients}}
-                <li> {{nom}} : {{quantité}}{{unité}}</li>
-                {{/each}}
-            </ul>
-        </p>
-        <p>
-            <!-- on définit l'id en question de la recette que l'on souhaite supprimer-->
-<!-- TODO: a remplacer ca par un lien stylé bouton-->
-                <input type="submit" value="Supprimer la recette" onclick="location.href='/suppressionRecette?id={{id}}'"/>
+Commentaires :
 
-        </p>
-        <p> <a href="resultat">Liste des résultats </a></p>
-        <p> <a href="/">Accueil</a></p>
+        {{#each comments}}
+<p>{{titre}} {{description}}</p>
+        {{/each}}
+
+    </p>
+    <p>
+      <!-- on définit l'id en question de la recette que l'on souhaite supprimer-->
+      <!-- TODO: a remplacer ca par un lien stylé bouton-->
+      <input type="submit" value="Supprimer la recette" onclick="location.href='/suppressionRecette?id={{id}}'"/>
+
+</p>
+<p> <a href="resultat">Liste des résultats </a></p>
+<p> <a href="/">Accueil</a></p>
+<!--on met lien url avec .html car il s'agit d'une page static. on veut récupérer l'id et le type=recette-->
+<p>
+  <input type="button" value="Ajouter un commentaire" onclick="location.href='/addComment.html?id={{id}}&type=recette'"/>
+</p>
 </body>
 
 </html>
