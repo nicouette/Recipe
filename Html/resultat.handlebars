@@ -2,10 +2,21 @@
 <head>
 <meta charset="utf-8" />
 <title>Recettes Résultat</title>
+  <link rel="stylesheet" href="/css/style_recette.css" />
 </head>
 
 <body>
-<h1>Recettes de Sandra, bon appétit !</h1>
+  <header>
+   <nav>
+                      <ul>
+                        <li><a href="/">Accueil</a></li>
+                        <li><a href="resultat">Lister les Recettes</a></li>
+                        <li><a href="ajoutRecette.html">Ajouter une Recette</a></li>
+                    </ul>
+  </nav>
+    <h1>Recettes de Sandra, bon appétit !</h1>
+    <h2 class="intro">À vos ustensiles</h2>
+  </header>
 <p>
 <!-- Voici les résultats qui correspondent à votre recherche:-->
 
@@ -16,21 +27,16 @@
        <th>Photo</th>
    </tr>
    {{#each lines}}
+
    <tr>
-       <td  width="500px"><a href="recette?id={{id}}">{{nom}}</a></td>
+
+       <td  width="500px"><div class=linkRes><a href="recette?id={{id}}">{{nom}}</div></a></td>
 	   <td>{{type}}</td>
        <td></td>
    </tr>
     {{/each}}
 
 </table>
-
-
-
-
-  <p> <a href="ajoutRecette.html">Ajouter une recette </a>
-  <p> <a href="/">Accueil</a></p>
-
 
 </body>
 </html>

@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <title>Recettes Ajout </title>
+      <link rel="stylesheet" href="/css/style_recette.css" />
     <script>
         let ingredientDivId = 1
         function addLine() {
@@ -27,7 +28,17 @@
 </head>
 
 <body>
+   <header>
+   <nav>
+                      <ul>
+                        <li><a href="/">Accueil</a></li>
+                        <li><a href="resultat">Lister les Recettes</a></li>
+                        <li><a href="ajoutRecette.html">Ajouter une Recette</a></li>
+                    </ul>
+  </nav>
     <h1>Recettes de Sandra, bon appétit !</h1>
+    <h2 class="intro">À vos ustensiles</h2>
+  </header>
     <p>
 
         <form method="post" action="addRecette">
@@ -65,10 +76,6 @@
 
 </form>
 </p>
-        <p> <a href="resultat">Liste des résultats </a></p>
-        <p> <a href="/">Accueil</a></p>
-
-
 
 </body>
 
