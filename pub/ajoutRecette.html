@@ -36,8 +36,8 @@
                         <li><a href="ajoutRecette.html">Ajouter une Recette</a></li>
                     </ul>
   </nav>
-    <h1>Recettes de Sandra, bon appétit !</h1>
-    <h2 class="intro">À vos ustensiles</h2>
+    <h1>Mon carnet de Recettes</h1>
+
   </header>
     <p>
 
@@ -46,7 +46,8 @@
     <button type="submit">Ajouter la recette</button>
 </div>
             <p>
-                <label for="Nom">Nom :</label>
+                <label for="Nom">Nom :<abbr title="Ce champ est obligatoire">*</abbr></label>
+
                 <input type="text" name="Nom" id="Nom" maxlength="200" required />
             </p>
             <p>
@@ -68,7 +69,8 @@
                     <option value="biscuit">Biscuit</option>
                     </select>
             </p>
-            <input type="button" name="Ajout" id="Ajout" value="Ajouter un ingrédient" onClick="addLine()"/>
+            <div class="button">
+            <input type="button" name="Ajout" id="Ajout" value="Ajouter un ingrédient" onClick="addLine()"/></div>
 <div id="ingredient">
 <!--si je garde ligne suivante alors j'ai 1 ligne ingrédient par défaut. nous choisisons de ne pas avoir de ligne ingredient par défaut-->
 <!--script>addLine()</script-->
@@ -78,5 +80,7 @@
 </p>
 
 </body>
-
+<footer>
+  @Copyright Sandra - All rights reserved
+</footer>
 </html>

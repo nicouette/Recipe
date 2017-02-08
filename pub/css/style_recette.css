@@ -66,6 +66,7 @@ td a:hover
     height: 200px;
     border-radius: 5px;
     background: url('/img/ustensiles.png') no-repeat;
+    background-size: contain;
     position: relative;
     margin-bottom: 25px;
 
@@ -83,4 +84,57 @@ td a:hover
     padding-left: 4px;
     color: white;
     font-size: 0.8em;
+}
+
+footer
+{
+      padding-bottom: 5px;
+}
+
+/* Voici les règles à appliquer aux champs invalides */
+input:invalid{
+  border-color: #900;
+  background-color: #FDD;
+}
+
+input{
+          box-sizing: border-box;
+          text-align:left;
+
+}
+
+textarea {
+    /* Pour aligner correctement les champs multilignes et leurs étiquettes */
+    vertical-align: top;
+
+    width: 600px;
+
+    /* Pour permettre aux utilisateurs de redimensionner un champ textuel horizontalement
+       Cela ne marche pas avec tous les navigateurs  */
+    resize: vertical;
+
+        /* Pour harmoniser l'apparence des bordures des champs textuels */
+    border: 1px solid #999;
+        /* Afin de s'assurer que tous les champs textuels utilisent la même police
+       Par défaut, textarea utilise une police à espacement constant */
+    font: 1em sans-serif;
+}
+
+.button {
+  padding-left: 150px;
+}
+
+input:text{
+    padding-left: 90px;
+}
+label
+
+{
+
+    display: block;
+
+    width: 150px;
+
+    float: left;
+
 }
