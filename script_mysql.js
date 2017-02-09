@@ -50,7 +50,7 @@ function getRecipie(id, callback) {
     // query pour pouvoir afficher les ingrédients, quantité et unité associés
     exeQuery('select nom,quantité,unité from ingredients join recettes_ingredients on id=ingredient_id where recette_id=:id', { id }, (resSelectedIngredient) => {
       results.ingredients = resSelectedIngredient
-      exeQuery(`select titre, description from commentaires where objet_id=:id AND type='recette'`, {id}, (resSelectedComment) => {
+      exeQuery(`select id, titre, description from commentaires where objet_id=:id AND type='recette'`, { id }, (resSelectedComment) => {
         results.comments = resSelectedComment
         console.log(results)
         callback(results)
@@ -117,15 +117,20 @@ function removeRecipie(id, callback) {
   exeQuery('delete from recettes_ingredients where recette_id=:id', { id }, () => {
     console.log('tu as perdu')
     exeQuery('delete from recettes where id=:id', { id }, callback)
+    // ajouter la suppression du commentaire(s) associé(s)
   }
   )
 }
 
 function addComment(titre, description, type, objetId, callback) {
   exeQuery('insert into commentaires(titre,description,type,objet_id) VALUES (:titre,:description,:type,:objetId)', { titre, description, type, objetId }, callback)
+ }
+
+function removeComments(id, callback) {
+  exeQuery('delete from commentaires where id=:id', {id}, callback)
 }
 
 module.exports = {
-  getAllRecipies, getRecipie, addRecipie, addIngredient, addIngredients, addQuantiteUnite, addQuantitesUnites, removeRecipie, addComment
+  getAllRecipies, getRecipie, addRecipie, addIngredient, addIngredients, addQuantiteUnite, addQuantitesUnites, removeRecipie, addComment, removeComments
 }
 

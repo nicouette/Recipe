@@ -2,7 +2,7 @@ body
 {
     font-family: Georgia;
     text-align: justify;
-    width: 900px;
+    width: 1000px;
     margin: auto;
     height: 100%;
 }
@@ -91,9 +91,12 @@ td a:hover
 
 footer
 {
+      color: #A4A4A4
       position:absolute;
-      margin-bottom: 02%;
+      top: 90%;
       bottom:0;
+      width: 100%;
+      min-width: 100px;
 }
 
 /* Voici les règles à appliquer aux champs invalides */
@@ -137,15 +140,26 @@ section label
 }
 
 
-section input[type="button"], section button[type="submit"]
+section input[type="button"]
  {
-  margin-left: 150px;
+
 	font:bold 13px Arial;
 	background:#f5f5f5;
 	color:#555;
 	border-radius:2px;
-  width:150px;
+  width:200px;
 	border:1px solid #ccc;
 	box-shadow:1px 1px 3px #999;
 }
 
+section button[type="submit"]
+ {
+
+	font:bold 13px Arial;
+	background:#f5f5f5;
+	color:#555;
+	border-radius:2px;
+  width:200px;
+	border:1px solid #ccc;
+	box-shadow:1px 1px 3px #999;
+}

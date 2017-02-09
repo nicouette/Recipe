@@ -1,8 +1,12 @@
 const Mysql = require('../script_mysql')
 const bodyParser = require('body-parser')
+const fs = require('fs')
+const path = require('path')
 
-function addComment(req, res) {
-  const parseBody = bodyParser.urlencoded({ extended: false })
+const confirmationAjout = fs.readFileSync(path.join(__dirname, '..', 'Html', 'confirmation3.html'))
+
+function addComment (req, res) {
+  const parseBody = bodyParser.urlencoded({extended: false})
   parseBody(req, res, () => {
     let titre
     let description
@@ -14,9 +18,9 @@ function addComment(req, res) {
     type = req.body.type
     objetId = req.body.id
     Mysql.addComment(titre, description, type, objetId, () => {
-      res.write('hello')
+      res.write(confirmationAjout)
       res.end()
     })
-    })
+  })
 }
 module.exports = addComment

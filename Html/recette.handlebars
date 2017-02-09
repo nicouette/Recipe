@@ -10,47 +10,50 @@
 <body>
   <!--on met lien url avec .html car il s'agit d'une page static. on veut récupérer l'id et le type=recette-->
   <header>
-   <nav>
-                      <ul>
-                        <li><a href="/">Accueil</a></li>
-                        <li><a href="resultat">Lister les Recettes</a></li>
-                        <li><a href="ajoutRecette.html">Ajouter une Recette</a></li>
-                    </ul>
-  </nav>
-  <h1>Mon carnet de Recettes</h1>
+    <nav>
+      <ul>
+        <li><a href="/">Accueil</a></li>
+        <li><a href="resultat">Lister les Recettes</a></li>
+        <li><a href="ajoutRecette.html">Ajouter une Recette</a></li>
+      </ul>
+    </nav>
+    <h1>Mon carnet de Recettes</h1>
   </header>
   <section>
-  <h3>Recette de {{nom}}</h3>
-
-    <h4> Réalisation :</h4><br/>{{description}}
-  </section>
-  <section>
     <p>
-    <h4>  Ingrédients :</h4>
-      <ul>
-        {{#each ingredients}}
-        <li> {{nom}} : {{quantité}}{{unité}}</li>
-        {{/each}}
-      </ul>
-    </p>
+      <!-- on définit l'id en question de la recette que l'on souhaite supprimer-->
+      <!-- TODO: a remplacer ca par un lien stylé bouton-->
+      <button type="submit" value="Supprimer la recette" onclick="location.href='/suppressionRecette?id={{id}}'"> Supprimer la recette</button>
+</p>
+<h3>Recette de {{nom}}</h3>
 
-  </section>
-  <section3>
-    <h4> Commentaires :</h4> {{#each comments}}
-    <p>{{titre}} {{description}}</p>
+<h4> Réalisation :</h4><br/>{{description}}
+<p>
+  <h4> Ingrédients :</h4>
+  <ul>
+    {{#each ingredients}}
+    <li> {{nom}} : {{quantité}}{{unité}}</li>
     {{/each}}
+  </ul>
+</p>
 
-  </section3>
+
+<p>
+  <h4> Commentaires :</h4>
+  <ul>
+    {{#each comments}}
+    <li>{{titre}}: {{description}}
+      <input type="button" name="Retrait" id="Retrait" value="-" onClick="location.href='/removeComments?id={{id}}'"/></li>
+{{/each}}
+</ul>
+</p>
+<p>
   <p>
     <input type="button" value="Ajouter un commentaire" onclick="location.href='/addComment.html?id={{id}}&type=recette'"/>
 </p>
 
-<p>
-  <!-- on définit l'id en question de la recette que l'on souhaite supprimer-->
-  <!-- TODO: a remplacer ca par un lien stylé bouton-->
-  <input type="submit" value="Supprimer la recette" onclick="location.href='/suppressionRecette?id={{id}}'"/>
 
-</p>
+</section>
 </body>
 <footer>
   @Copyright Sandra - All rights reserved
