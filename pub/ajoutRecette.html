@@ -2,61 +2,63 @@
 <html>
 
 <head>
-    <meta charset="utf-8" />
-    <title>Recettes Ajout </title>
-      <link rel="stylesheet" href="/css/style_recette.css" />
-    <script>
-        let ingredientDivId = 1
-        function addLine() {
-            const ingredientDiv = document.getElementById('ingredient')
-            const ingredientNew = document.createElement('p')
-            ingredientNew.setAttribute('id', 'ingredientDiv' + ingredientDivId)
-            ingredientNew.innerHTML = `<label for="Ingrédient${ingredientDivId}">Ingrédient : </label>
+  <meta charset="utf-8" />
+  <title>Recettes Ajout </title>
+  <link rel="stylesheet" href="/css/style_recette.css" />
+  <script>
+    let ingredientDivId = 1
+    function addLine() {
+      const ingredientDiv = document.getElementById('ingredient')
+      const ingredientNew = document.createElement('p')
+      ingredientNew.setAttribute('id', 'ingredientDiv' + ingredientDivId)
+      ingredientNew.innerHTML =
+               `<label for="Ingrédient${ingredientDivId}">Ingrédient : </label>
                 <input type="text" name="Ingrédient" id="Ingrédient${ingredientDivId}"/>
                 <label for="Quantité${ingredientDivId}">Quantité : </label>
                 <input type="number" step="any" name="Quantité" id="Quantité${ingredientDivId}" required/>
                 <label for="Unité${ingredientDivId}">Unité : </label>
                 <input type="text" name="Unité" id="Unité${ingredientDivId}" />
-                <input type="button" name="Retrait" id="Retrait${ingredientDivId}" value="-" onClick="removeLine('ingredientDiv${ingredientDivId}')"/>`
-            ingredientDiv.appendChild(ingredientNew)
-            ingredientDivId++
-        }
-        function removeLine(selectedIngredientId) {
-            document.getElementById(selectedIngredientId).remove()
-        }
-    </script>
+                 <input type="button" name="Retrait" id="Retrait${ingredientDivId}" value="-" onClick="removeLine('ingredientDiv${ingredientDivId}')"/>`
+      ingredientDiv.appendChild(ingredientNew)
+      ingredientDivId++
+    }
+    function removeLine(selectedIngredientId) {
+      document.getElementById(selectedIngredientId).remove()
+    }
+  </script>
 </head>
 
 <body>
-   <header>
-   <nav>
-                      <ul>
-                        <li><a href="/">Accueil</a></li>
-                        <li><a href="resultat">Lister les Recettes</a></li>
-                        <li><a href="ajoutRecette.html">Ajouter une Recette</a></li>
-                    </ul>
-  </nav>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="/">Accueil</a></li>
+        <li><a href="resultat">Lister les Recettes</a></li>
+        <li><a href="ajoutRecette.html">Ajouter une Recette</a></li>
+      </ul>
+    </nav>
     <h1>Mon carnet de Recettes</h1>
 
   </header>
-    <p>
+  <p>
 
-        <form method="post" action="addRecette">
-<div class="button">
-    <button type="submit">Ajouter la recette</button>
-</div>
-            <p>
-                <label for="Nom">Nom :<abbr title="Ce champ est obligatoire">*</abbr></label>
+    <form method="post" action="addRecette">
+     <section>
+      <p>
+        <button type="submit">Ajouter la recette</button></p>
+      </div>
+      <p>
+        <label for="Nom">Nom :<abbr title="Ce champ est obligatoire" autofocus>*</abbr></label>
 
-                <input type="text" name="Nom" id="Nom" maxlength="200" required />
-            </p>
-            <p>
-                <label for="Description">Description : </label>
-                <textarea name="Description" id="Description" rows="10" cols="50" placeholder="Entrez la description de votre recette."></textarea>
-            </p>
-            <p>
-                <label for="Type">Type de recette : </label>
-                <select name="Type" id="Type">
+        <input type="text" name="Nom" id="Nom" maxlength="200" required />
+      </p>
+      <p>
+        <label for="Description">Description : </label>
+        <textarea name="Description" id="Description" rows="10" cols="50" placeholder="Entrez la description de votre recette."></textarea>
+      </p>
+      <p>
+        <label for="Type">Type de recette : </label>
+        <select name="Type" id="Type">
                     <option value="apéritif">Apéritif</option>
                     <option value="entrée">Entrée</option>
                     <option value="viande">Viande</option>
@@ -68,12 +70,13 @@
                     <option value="dessert">Dessert</option>
                     <option value="biscuit">Biscuit</option>
                     </select>
-            </p>
-            <div class="button">
-            <input type="button" name="Ajout" id="Ajout" value="Ajouter un ingrédient" onClick="addLine()"/></div>
+      </p>
+
+      <p>
+        <input type="button" name="Ajout" id="Ajout" value="Ajouter un ingrédient" onClick="addLine()"/></p> </section>
 <div id="ingredient">
-<!--si je garde ligne suivante alors j'ai 1 ligne ingrédient par défaut. nous choisisons de ne pas avoir de ligne ingredient par défaut-->
-<!--script>addLine()</script-->
+  <!--si je garde ligne suivante alors j'ai 1 ligne ingrédient par défaut. nous choisisons de ne pas avoir de ligne ingredient par défaut-->
+  <!--script>addLine()</script-->
 </div>
 
 </form>
@@ -83,4 +86,5 @@
 <footer>
   @Copyright Sandra - All rights reserved
 </footer>
+
 </html>

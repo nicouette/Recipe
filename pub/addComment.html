@@ -49,6 +49,7 @@
   une recette ou un ingrédient.
 </h3>
 <form method="post" action="/addComments">
+<section>
   <p>
     <label for="Titre">Titre :</label>
     <input type="text" name="Titre" id="Titre" maxlength="200" required />
@@ -60,9 +61,10 @@
 
   <input type="hidden" name="type" id="type" />
   <input type="hidden" name="id" id="id" />
-  <div class="button">
+  <p>
     <button type="submit">Ajouter le commentaire</button>
-  </div>
+  </p>
+</section>
 </form>
 </body>
 <footer>
