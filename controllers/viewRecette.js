@@ -17,7 +17,7 @@ function viewRecette (req, res, id) {
     res.write(html)
     res.end()
   }
-  )
+ )
 }
 module.exports = viewRecette
 
