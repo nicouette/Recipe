@@ -50,7 +50,7 @@ function getRecipie (id, callback) {
     // query pour pouvoir afficher les ingrédients, quantité et unité associés
     exeQuery('select nom,quantité,unité from ingredients join recettes_ingredients on id=ingredient_id where recette_id=:id', {id}, (resSelectedIngredient) => {
       results.ingredients = resSelectedIngredient
-      exeQuery('select id, titre, description from commentaires where objet_id=:id AND type=\'recette\'', {id}, (resSelectedComment) => {
+      exeQuery('select id, titre, description, objet_id from commentaires where objet_id=:id AND type=\'recette\'', {id}, (resSelectedComment) => {
         results.comments = resSelectedComment
         console.log(results)
         callback(results)

@@ -43,7 +43,7 @@
   <ul>
     {{#each comments}}
     <li>{{titre}}: {{description}}
-      <input type="button" name="Retrait" id="Retrait" value="-" onClick="location.href='/removeComments?id={{id}}'"/></li>
+      <input type="button" name="Retrait" id="Retrait" value="-" onClick="location.href='/removeComments?id={{id}}&recetteId={{objet_id}}'"/></li>
 {{/each}}
 </ul>
 </p>

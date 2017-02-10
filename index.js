@@ -33,7 +33,7 @@ const server = http.createServer((req, res) => {
   } else if (parsedUrl.pathname === '/addComments') {
     addComment(req, res)
   } else if (parsedUrl.pathname === '/removeComments') {
-    suppressionCommentaire(req, res, parsedUrl.query.id)
+    suppressionCommentaire(req, res, parsedUrl.query.id, parsedUrl.query.recetteId)
   } else {
     // sinon c'est le serveur static qui gère
     req.addListener('end', () => {
