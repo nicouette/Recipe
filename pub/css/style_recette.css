@@ -1,3 +1,8 @@
+html {
+    /* For the sticky footer */
+    position: relative;
+    min-height: 100%;
+}
 
 body
 {
@@ -6,7 +11,8 @@ body
     text-align: justify;
     width: 1000px;
     margin: auto;
-    height: 80%;
+    margin-bottom:100px;
+
 }
 
 section h4
@@ -17,9 +23,9 @@ section h4
 
 footer
 {
-      position:relative;
-      margin-bottom: 02%;
+    position: absolute;
 
+    bottom: 0;
 }
 
 nav
