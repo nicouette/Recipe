@@ -1,43 +1,46 @@
 <html>
+
 <head>
-<meta charset="utf-8" />
-<title>Recettes Résultat</title>
+  <meta charset="utf-8" />
+  <title>Recettes Résultat</title>
   <link rel="stylesheet" href="/css/style_recette.css" />
 </head>
 
 <body>
   <header>
-   <nav>
-                      <ul>
-                        <li><a href="/">Accueil</a></li>
-                        <li><a href="resultat">Lister les Recettes</a></li>
-                        <li><a href="ajoutRecette.html">Ajouter une Recette</a></li>
-                    </ul>
-  </nav>
-  <h1>Mon carnet de Recettes</h1>
+    <nav>
+      <ul>
+        <li><a href="/">Accueil</a></li>
+        <li><a href="resultat">Lister les Recettes</a></li>
+        <li><a href="ajoutRecette.html">Ajouter une Recette</a></li>
+      </ul>
+    </nav>
+    <h1>Mon carnet de Recettes</h1>
   </header>
-<p>
-<!-- Voici les résultats qui correspondent à votre recherche:-->
+  <p>
+    <!-- Voici les résultats qui correspondent à votre recherche:-->
 
-<table >
-   <tr>
-       <th width="500px">Nom</th>
-	   <th>Type</th>
-       <th>Photo</th>
-   </tr>
-   {{#each lines}}
+    <table>
+      <tr>
+        <th width="500px">Nom</th>
+        <th>Type</th>
+        <th>Photo</th>
+      </tr>
+      {{#each lines}}
 
-   <tr>
+      <tr>
 
-       <td  width="500px"><div class=linkRes><a href="recette?id={{id}}">{{nom}}</div></a></td>
-	   <td>{{type}}</td>
-       <td></td>
-   </tr>
-    {{/each}}
+        <td width="500px">
+          <div class=linkRes><a href="recette?id={{id}}">{{nom}}</div></a></td>
+        <td>{{type}}</td>
+        <td></td>
+      </tr>
+      {{/each}}
 
-</table>
-<footer>
-  @Copyright Sandra - All rights reserved
-</footer>
+    </table>
+    <footer>
+      @Copyright Sandra - All rights reserved
+    </footer>
 </body>
+
 </html>
