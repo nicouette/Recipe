@@ -28,6 +28,8 @@ const server = http.createServer((req, res) => {
     viewRecette(req, res, parsedUrl.query.id)
   } else if (parsedUrl.pathname === '/addRecette') {
     addRecette(req, res)
+  } else if (parsedUrl.pathname === '/ajoutRecette.html') {
+    template.addRecettePage(req, res)
   } else if (parsedUrl.pathname === '/suppressionRecette') {
     // parsedUrl.query.id permet de récupérer l'id de la recette
     suppressionRecette(req, res, parsedUrl.query.id)

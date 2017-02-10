@@ -1,44 +1,11 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-  <meta charset="utf-8" />
-  <title>Nouvelle Recette</title>
-  <link rel="stylesheet" href="/css/style_recette.css" />
-  <script>
-    let ingredientDivId = 1
-    function addLine() {
-      const ingredientDiv = document.getElementById('ingredient')
-      const ingredientNew = document.createElement('p')
-      ingredientNew.setAttribute('id', 'ingredientDiv' + ingredientDivId)
-      ingredientNew.innerHTML =
-               `<label for="Ingrédient${ingredientDivId}">Ingrédient : </label>
-                <input type="text" name="Ingrédient" id="Ingrédient${ingredientDivId}"/>
-                <label for="Quantité${ingredientDivId}">Quantité : </label>
-                <input type="number" step="any" name="Quantité" id="Quantité${ingredientDivId}" required/>
-                <label for="Unité${ingredientDivId}">Unité : </label>
-                <input type="text" name="Unité" id="Unité${ingredientDivId}" />
-                 <input type="button" name="Retrait" id="Retrait${ingredientDivId}" value="-" onClick="removeLine('ingredientDiv${ingredientDivId}')"/>`
-      ingredientDiv.appendChild(ingredientNew)
-      ingredientDivId++
-    }
-    function removeLine(selectedIngredientId) {
-      document.getElementById(selectedIngredientId).remove()
-    }
-  </script>
-</head>
-
+  {{> head}}
 <body>
   <header>
-    <nav>
-      <ul>
-        <li><a href="/">Accueil</a></li>
-        <li><a href="resultat">Lister les Recettes</a></li>
-        <li><a href="ajoutRecette.html">Ajouter une Recette</a></li>
-      </ul>
-    </nav>
+{{> nav}}
     <h1>Mon carnet de Recettes</h1>
-
   </header>
   <p>
 
@@ -80,10 +47,27 @@
 
 </form>
 </p>
-
+  <script>
+    let ingredientDivId = 1
+    function addLine() {
+      const ingredientDiv = document.getElementById('ingredient')
+      const ingredientNew = document.createElement('p')
+      ingredientNew.setAttribute('id', 'ingredientDiv' + ingredientDivId)
+      ingredientNew.innerHTML =
+               `<label for="Ingrédient${ingredientDivId}">Ingrédient : </label>
+                <input type="text" name="Ingrédient" id="Ingrédient${ingredientDivId}"/>
+                <label for="Quantité${ingredientDivId}">Quantité : </label>
+                <input type="number" step="any" name="Quantité" id="Quantité${ingredientDivId}" required/>
+                <label for="Unité${ingredientDivId}">Unité : </label>
+                <input type="text" name="Unité" id="Unité${ingredientDivId}" />
+                 <input type="button" name="Retrait" id="Retrait${ingredientDivId}" value="-" onClick="removeLine('ingredientDiv${ingredientDivId}')"/>`
+      ingredientDiv.appendChild(ingredientNew)
+      ingredientDivId++
+    }
+    function removeLine(selectedIngredientId) {
+      document.getElementById(selectedIngredientId).remove()
+    }
+  </script>
 </body>
-<footer>
-  @Copyright Sandra - All rights reserved
-</footer>
-
+{{> footer}}
 </html>

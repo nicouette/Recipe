@@ -10,6 +10,8 @@ const nav = fs.readFileSync(path.join(__dirname, '..', 'templates', 'nav.handleb
 const footer = fs.readFileSync(path.join(__dirname, '..', 'templates', 'footer.handlebars'))
 const index = fs.readFileSync(path.join(__dirname, '..', 'templates', 'welcome.handlebars'))
 const comment = fs.readFileSync(path.join(__dirname, '..', 'templates', 'addComment.handlebars'))
+const addRecette = fs.readFileSync(path.join(__dirname, '..', 'templates', 'ajoutRecette.handlebars'))
+
 
 
 Handlebars.registerPartial('head', head.toString())
@@ -31,8 +33,16 @@ function commentPage(req, res) {
     title: 'Commentaire'
   }
   pageToDisplay(req, res, commentTemplate, context)
-
 }
+
+const addRecetteTemplate = Handlebars.compile(addRecette.toString())
+function addRecettePage (req, res) {
+  const context = {
+    title: 'Nouvelle Recette'
+  }
+  pageToDisplay(req, res, addRecetteTemplate, context)
+}
+
 
 function pageToDisplay(req, res, template, context) {
   const html = template(context)
@@ -41,5 +51,5 @@ function pageToDisplay(req, res, template, context) {
 }
 
 
-module.exports = { welcome, commentPage }
+module.exports = { welcome, commentPage, addRecettePage }
 
