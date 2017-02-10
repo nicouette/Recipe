@@ -6,7 +6,7 @@ html {
 
 body
 {
-    font-family:'Lobster Two', cursive;
+    font-family: 'Slabo 27px', serif;
     font-color: red;
     text-align: justify;
     width: 1000px;
@@ -17,19 +17,19 @@ body
 
 section h4
 {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  text-align: justify;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: justify;
 }
 
 footer
 {
     position: absolute;
-
     bottom: 0;
 }
 
 nav
 {
+    font-family: Georgia;
     display: inline-block;
     width: 740px;
     text-align: right;
