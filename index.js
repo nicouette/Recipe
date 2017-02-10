@@ -7,7 +7,7 @@ const resultat = require('./controllers/resultat')
 const viewRecette = require('./controllers/viewRecette')
 const addComment = require('./controllers/addComments')
 const suppressionCommentaire = require('./controllers/removeComments')
-const welcome = require('./controllers/welcome')
+const template = require('./controllers/template')
 
 // retrieve http module
 const http = require('http')
@@ -33,10 +33,12 @@ const server = http.createServer((req, res) => {
     suppressionRecette(req, res, parsedUrl.query.id)
   } else if (parsedUrl.pathname === '/addComments') {
     addComment(req, res)
+  } else if (parsedUrl.pathname === '/addComment.html') {
+    template.commentPage(req, res)
   } else if (parsedUrl.pathname === '/removeComments') {
     suppressionCommentaire(req, res, parsedUrl.query.id, parsedUrl.query.recetteId)
   } else if (parsedUrl.pathname === '/') {
-    welcome(req, res)
+    template.welcome(req, res)
   } else {
     // sinon c'est le serveur static qui gère
     req.addListener('end', () => {

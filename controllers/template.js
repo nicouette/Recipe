@@ -8,7 +8,8 @@ const Handlebars = require('handlebars')
 const head = fs.readFileSync(path.join(__dirname, '..', 'templates', 'head.handlebars'))
 const nav = fs.readFileSync(path.join(__dirname, '..', 'templates', 'nav.handlebars'))
 const footer = fs.readFileSync(path.join(__dirname, '..', 'templates', 'footer.handlebars'))
-const resultats = fs.readFileSync(path.join(__dirname, '..', 'templates', 'welcome.handlebars'))
+const index = fs.readFileSync(path.join(__dirname, '..', 'templates', 'welcome.handlebars'))
+const comment = fs.readFileSync(path.join(__dirname, '..', 'templates', 'addComment.handlebars'))
 
 
 Handlebars.registerPartial('head', head.toString())
@@ -16,16 +17,29 @@ Handlebars.registerPartial('nav', nav.toString())
 Handlebars.registerPartial('footer', footer.toString())
 
 // on utilise library qui va le mettre ready to be used - pas de résultats
-const templateResultat = Handlebars.compile(resultats.toString())
-
-function welcome (req, res) {
+const welcomeTemplate = Handlebars.compile(index.toString())
+function welcome(req, res) {
   const context = {
+    title: 'Accueil'
   }
-  const html = templateResultat(context)
+  pageToDisplay(req, res, welcomeTemplate, context)
+
+}
+const commentTemplate = Handlebars.compile(comment.toString())
+function commentPage(req, res) {
+  const context = {
+    title: 'Commentaire'
+  }
+  pageToDisplay(req, res, commentTemplate, context)
+
+}
+
+function pageToDisplay(req, res, template, context) {
+  const html = template(context)
   res.write(html)
   res.end()
 }
 
 
-module.exports = welcome
+module.exports = { welcome, commentPage }
 
