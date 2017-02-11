@@ -1,20 +1,8 @@
 <html>
-
-<head>
-  <meta charset="utf-8" />
-  <title>Recettes Résultat</title>
-  <link rel="stylesheet" href="/css/style_recette.css" />
-</head>
-
+{{> head}}
 <body>
   <header>
-    <nav>
-      <ul>
-        <li><a href="/">Accueil</a></li>
-        <li><a href="resultat">Lister les Recettes</a></li>
-        <li><a href="ajoutRecette.html">Ajouter une Recette</a></li>
-      </ul>
-    </nav>
+{{> nav}}
     <h1>Mon carnet de Recettes</h1>
   </header>
   <p>
@@ -38,9 +26,7 @@
       {{/each}}
 
     </table>
-    <footer>
-      @Copyright Sandra - All rights reserved
-    </footer>
+{{> footer}}
 </body>
 
 </html>
