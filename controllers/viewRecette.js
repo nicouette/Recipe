@@ -1,23 +1,17 @@
 const Mysql = require('../script_mysql')
-const fs = require('fs')
-const path = require('path')
 
-// charge module handlebars
-const Handlebars = require('handlebars')
-
-// on lit la page recette - ici recette.html est le nom du fichier
-const recette = fs.readFileSync(path.join(__dirname, '..', 'Html', 'recette.handlebars'))
-
-// compilation du template
-const templateRecette = Handlebars.compile(recette.toString())
+const template = require('./template')
 
 function viewRecette (req, res, id) {
-  Mysql.getRecipie(id, (results) => {
-    const html = templateRecette(results)
-    res.write(html)
-    res.end()
+  Mysql.getRecipie(id, (result) => {
+    const context = {
+      title: 'Recette',
+      // recette est la facon dont je veux nommer l'objet result
+      recette: result
+    }
+    template.viewRecettePage(req, res, context)
+  //  console.log(context.recette.nom)
   }
- )
+  )
 }
 module.exports = viewRecette
-

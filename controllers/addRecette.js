@@ -1,9 +1,8 @@
 const bodyParser = require('body-parser')
 const Mysql = require('../script_mysql')
 
-
 function addRecette (req, res) {
-  // on veut communiquer avec la base les valeurs étant dans la requete - donc récupérer les infos de la requete pour les envoyer à la base.
+// on veut communiquer avec la base les valeurs étant dans la requete - donc récupérer les infos de la requete pour les envoyer à la base.
 
   // retourne une fonction qui prend 3 param.- req. http, res.http,callback
   // sert à extraire le body du reste.
@@ -38,7 +37,7 @@ function addRecette (req, res) {
           // console.log(req.body)
           res.writeHead(302, {
             Location: `/recette?id=${recetteId}`
-            // add other headers here...
+          // add other headers here...
           })
           res.end()
         }

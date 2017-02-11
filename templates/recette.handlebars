@@ -1,22 +1,11 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-  <meta charset="utf-8" />
-  <link rel="stylesheet" href="/css/style_recette.css" />
-  <title>Recettes Description</title>
-</head>
-
+{{> head}}
 <body>
   <!--on met lien url avec .html car il s'agit d'une page static. on veut récupérer l'id et le type=recette-->
   <header>
-    <nav>
-      <ul>
-        <li><a href="/">Accueil</a></li>
-        <li><a href="resultat">Lister les Recettes</a></li>
-        <li><a href="ajoutRecette.html">Ajouter une Recette</a></li>
-      </ul>
-    </nav>
+{{> nav}}
     <h1>Mon carnet de Recettes</h1>
   </header>
   <section>
@@ -25,13 +14,13 @@
       <!-- TODO: a remplacer ca par un lien stylé bouton-->
       <button type="submit" value="Supprimer la recette" onclick="location.href='/suppressionRecette?id={{id}}'"> Supprimer la recette</button>
 </p>
-<h3>Recette de {{nom}}</h3>
+<h3>Recette de {{recette.nom}}</h3>
 
-<h4> Réalisation :</h4><br/>{{description}}
+<h4> Réalisation :</h4><br/>{{recette.description}}
 <p>
   <h4> Ingrédients :</h4>
   <ul>
-    {{#each ingredients}}
+    {{#each recette.ingredients}}
     <li> {{nom}} : {{quantité}}{{unité}}</li>
     {{/each}}
   </ul>
@@ -41,7 +30,7 @@
 <p>
   <h4> Commentaires :</h4>
   <ul>
-    {{#each comments}}
+    {{#each recette.comments}}
     <li>{{titre}}: {{description}}
       <input type="button" name="Retrait" id="Retrait" value="-" onClick="location.href='/removeComments?id={{id}}&recetteId={{objet_id}}'"/></li>
 {{/each}}
@@ -49,14 +38,12 @@
 </p>
 <p>
   <p>
-    <input type="button" value="Ajouter un commentaire" onclick="location.href='/addComment.html?id={{id}}&type=recette'"/>
+    <input type="button" value="Ajouter un commentaire" onclick="location.href='/addComment.html?id={{recette.id}}&type=recette'"/>
 </p>
 
 
 </section>
+{{> footer}}
 </body>
-<footer>
-  @Copyright Sandra - All rights reserved
-</footer>
 
 </html>
