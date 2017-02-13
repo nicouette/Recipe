@@ -7,7 +7,7 @@ html {
 body
 {
     font-family: 'Slabo 27px', serif;
-    font-color: red;
+    color: #A901DB;
     text-align: justify;
     width: 1000px;
     margin: auto;
@@ -15,11 +15,6 @@ body
 
 }
 
-section h4
-{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    text-align: justify;
-}
 
 footer
 {
@@ -50,15 +45,15 @@ nav li
 nav a
 {
     font-size: 1.3em;
-    color: #181818;
+    color: #A901DB;
     padding-bottom: 3px;
     text-decoration: none;
 }
 
 nav a:hover
 {
-    color: #760001;
-    border-bottom: 3px solid #760001;
+    color: #D358F7;
+    border-bottom: 3px solid #E2A9F3;
 }
 
 
@@ -72,8 +67,8 @@ td a
 
 td a:hover
 {
-    color: #760001;
-    border-bottom: 3px solid #760001;
+    color: #D358F7;
+    border-bottom: 3px solid #E2A9F3;
 }
 
 #banner_image

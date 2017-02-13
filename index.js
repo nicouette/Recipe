@@ -16,14 +16,25 @@ const http = require('http')
 const files = new statiq.Server('./pub')
 
 // create server with function, ce qu'il fait
-const server = http.createServer((req, res) => {
+const server = http.createServer(tryServ)
+function tryServ (req, res) {
+  try {
+    // quelque chose qu'on va essayer
+    serv(req, res)
+  } catch (error) {
+    // quand on attrape une erreur je declare fonction error et exe ce qui est déf dans la fonction
+    console.log(error)
+  }
+}
+
+function serv (req, res) {
   // => pour les functions sans nom entre autres
   const parsedUrl = url.parse(`http://èlèl${req.url}`, true)
-  // console.log(parsedUrl);
+  // console.log(parsedUrl)
   if (parsedUrl.pathname === '/resultat') {
     resultat(req, res)
-    // ici /recette ce n'est pas la page mais l'url - doit être identique à celle définit dans resultat.moustache
-    // avec parsedUrl je n'ai que /recette qui est pris en compte dans url et pas l'id (search)
+  // ici /recette ce n'est pas la page mais l'url - doit être identique à celle définit dans resultat.moustache
+  // avec parsedUrl je n'ai que /recette qui est pris en compte dans url et pas l'id (search)
   } else if (parsedUrl.pathname === '/recette') {
     viewRecette(req, res, parsedUrl.query.id)
   } else if (parsedUrl.pathname === '/addRecette') {
@@ -51,7 +62,6 @@ const server = http.createServer((req, res) => {
       })
     }).resume()
   }
-})
+}
 // start server
 server.listen(8080)
-

@@ -5,7 +5,7 @@ function suppressionRecette (req, res, id) {
   Mysql.removeRecipie(id, () => {
     // console.log(req.body)
     res.writeHead(302, {
-      Location: '/'
+      Location: '/resultat'
       // add other headers here...
     })
     res.end()
