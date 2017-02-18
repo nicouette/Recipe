@@ -32,12 +32,12 @@
   <ul>
     {{#each recette.comments}}
     <li>{{titre}}: {{description}}
+      <div class="buttonMoins">
       <input type="button" name="Retrait" id="Retrait" value="-" onClick="location.href='/removeComments?id={{id}}&recetteId={{objet_id}}'"/></li>
 {{/each}}
 </ul>
 </p>
 <p>
-  <p>
     <input type="button" value="Ajouter un commentaire" onclick="location.href='/addComment.html?id={{recette.id}}&type=recette'"/>
 </p>
 

@@ -1,10 +1,10 @@
-const Mysql = require('../script_mysql')
+const db = require('../db')
 
 const template = require('./template')
 
 
 function resultat (req, res) {
-  Mysql.getAllRecipies((results) => {
+  db.getAllRecipies((results) => {
     const context = {
       lines: results,
       title: 'Nouvelle Recette'

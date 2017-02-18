@@ -1,8 +1,8 @@
-const Mysql = require('../script_mysql')
+const db = require('../db')
 
 
 function suppressionCommentaire (req, res, id, objetId) {
-  Mysql.removeComments(id, () => {
+  db.removeComments(id, () => {
     // console.log(req.body)
     res.writeHead(302, {
       Location: `/recette?id=${objetId}`

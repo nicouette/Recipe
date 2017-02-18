@@ -1,8 +1,8 @@
-const Mysql = require('../script_mysql')
+const db = require('../db')
 
 
 function suppressionRecette (req, res, id) {
-  Mysql.removeRecipie(id, () => {
+  db.removeRecipie(id, () => {
     // console.log(req.body)
     res.writeHead(302, {
       Location: '/resultat'

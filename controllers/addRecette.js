@@ -1,5 +1,5 @@
 const bodyParser = require('body-parser')
-const Mysql = require('../script_mysql')
+const db = require('../db')
 
 function addRecette (req, res) {
 // on veut communiquer avec la base les valeurs étant dans la requete - donc récupérer les infos de la requete pour les envoyer à la base.
@@ -13,7 +13,7 @@ function addRecette (req, res) {
     // console.log(req.body)
     // function() = function de mon callback -je veux que ca termine le requete http donc res.write et res.end
     // je mets Mysql devant le nom de la fonction que j'appelle car la fonction a été défini dans un autre module définit par la variable Mysql
-    Mysql.addRecipie(req.body.Nom, req.body.Description, req.body.Type, (recetteId) => {
+    db.addRecipie(req.body.Nom, req.body.Description, req.body.Type, (recetteId) => {
       let ingredients
       let quantites
       let unites
@@ -32,8 +32,8 @@ function addRecette (req, res) {
         unites = [req.body.Unité]
       }
       // j'utilise la fonction dans la suite
-      Mysql.addIngredients(ingredients, () => {
-        Mysql.addQuantitesUnites(recetteId, ingredients, quantites, unites, () => {
+      db.addIngredients(ingredients, () => {
+        db.addQuantitesUnites(recetteId, ingredients, quantites, unites, () => {
           // console.log(req.body)
           res.writeHead(302, {
             Location: `/recette?id=${recetteId}`

@@ -1,4 +1,4 @@
-const Mysql = require('../script_mysql')
+const db = require('../db')
 const bodyParser = require('body-parser')
 
 
@@ -10,7 +10,7 @@ function addComment (req, res) {
     const description = req.body.Description
     const type = req.body.type
     const objetId = req.body.id
-    Mysql.addComment(titre, description, type, objetId, () => {
+    db.addComment(titre, description, type, objetId, () => {
       // res.write(confirmationAjout)
       res.writeHead(302, {
         Location: `/recette?id=${objetId}`

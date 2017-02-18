@@ -51,7 +51,7 @@ function resultsPage (req, res, context) {
 const viewRecetteTemplate = Handlebars.compile(recette.toString())
 function viewRecettePage (req, res, context) {
   pageToDisplay(req, res, viewRecetteTemplate, context)
-  //console.log(recette.nom)
+  // console.log(recette.nom)
 }
 
 function pageToDisplay (req, res, template, context) {

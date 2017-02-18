@@ -9,7 +9,9 @@ body
     font-family: 'Slabo 27px', serif;
     color: #A901DB;
     text-align: justify;
-    width: 1000px;
+    max-width: 1000px;
+    padding-left: 100px;
+    padding-right: 100px;
     margin: auto;
     margin-bottom:100px;
 
@@ -61,7 +63,7 @@ nav a:hover
 td a
 
 {
-    color: #6E6E6E;
+    color:#D358F7;
 
 }
 
@@ -145,7 +147,7 @@ section label
 section input[type="button"]
  {
 
-	font:bold 13px Arial;
+	font:'Slabo 27px', serif;
 	background:#f5f5f5;
 	color:#555;
 	border-radius:2px;
@@ -164,4 +166,9 @@ section button[type="submit"]
   width:200px;
 	border:1px solid #ccc;
 	box-shadow:1px 1px 3px #999;
+}
+
+.buttonMoins
+{
+ width:20px;
 }
