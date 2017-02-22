@@ -5,7 +5,7 @@ const bodyParser = require('body-parser')
 function addComment (req, res) {
   const parseBody = bodyParser.urlencoded({extended: false})
   parseBody(req, res, () => {
-    console.log(req.body)
+    //console.log(req.body)
     const titre = req.body.Titre
     const description = req.body.Description
     const type = req.body.type

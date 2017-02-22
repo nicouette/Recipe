@@ -6,7 +6,6 @@
   "scripts": {
     "start": "nodemon -e js,html,json,handlebars,css --watch  Html --watch . --watch pub index.js",
     "test": "set DB_URL=:memory:&& mocha ./tests/*.js"
-
   },
   "author": "sandra",
   "license": "ISC",
@@ -23,6 +22,7 @@
     "sqlite3": "^3.1.8"
   },
   "devDependencies": {
+    "chai": "^3.5.0",
     "hippie": "^0.5.1",
     "mocha": "^3.2.0"
   }

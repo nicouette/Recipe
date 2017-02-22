@@ -6,7 +6,7 @@ const sqlite = require('sqlite3').verbose()
 // on ouvre "la connection" au fichier de base de données
 // const db = new sqlite.Database(path.join(__dirname, 'sqlite', 'projet_recette.sqlite'))
 // || est un ou, si le 1er argument n'est pas ok je prends le 2nd
-console.log(process.env.DB_URL)
+//console.log(process.env.DB_URL)
 const db = new sqlite.Database(process.env.DB_URL || path.join(__dirname, 'sqlite', 'projet_recette.sqlite'))
 // à ce niveau, la base est vierge, on doit s'assurer de créer les tables
 const createTables = fs.readFileSync(path.join(__dirname, 'sqlite', 'script.sql'))
@@ -16,7 +16,7 @@ db.exec(createTables.toString())
 function exeQuery (query, values, callback) {
   db.all(query, values, (error, results) => {
     if (error) throw error
-    console.log('The solution is: ', results)
+    //console.log('The solution is: ', results)
     callback(results)
   })
 }
@@ -50,7 +50,7 @@ function getRecipie (id, callback) {
       results.ingredients = resSelectedIngredient
       exeQuery("select id, titre, description, objet_id from commentaires where objet_id=$id AND type='recette'", {$id: id}, (resSelectedComment) => {
         results.comments = resSelectedComment
-        console.log(results)
+       // console.log(results)
         callback(results)
       }
       )
@@ -62,7 +62,7 @@ function addRecipie ($nom, $description, $type, callback) {
   // exeQuery a 2 parameters: la query - ici un insert et le callback -pour me dire que c'est fini
   // quand dans le code on rencontre nom, description , type , on remplace par ce qu'il y a dans le paramètre values soit les variables
   insertQuery('insert into Recettes (nom,description,type) Values($nom,$description,$type)', {$nom, $description, $type}, (insertId) => {
-    console.log(insertId)
+    //console.log(insertId)
     callback(insertId)
   })
 }
@@ -86,7 +86,7 @@ function addIngredient ($nom, callback) {
   // exeQuery pour inserer les données dans la table ingrédients
 
   const queryIngredient = 'insert or ignore into Ingredients (nom) Values ($nom)'
-  console.log(queryIngredient)
+  //console.log(queryIngredient)
   exeQuery(queryIngredient, {$nom}, callback)
 }
 
