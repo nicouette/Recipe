@@ -65,3 +65,5 @@ function serv (req, res) {
 }
 // start server
 server.listen(8080)
+
+module.exports = serv

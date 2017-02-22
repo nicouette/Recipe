@@ -1,9 +1,16 @@
 const path = require('path')
+const fs = require('fs')
 
 // module pour communiquer avec mysql
 const sqlite = require('sqlite3').verbose()
 // on ouvre "la connection" au fichier de base de données
-const db = new sqlite.Database(path.join(__dirname, 'sqlite', 'projet_recette.sqlite'))
+// const db = new sqlite.Database(path.join(__dirname, 'sqlite', 'projet_recette.sqlite'))
+// || est un ou, si le 1er argument n'est pas ok je prends le 2nd
+console.log(process.env.DB_URL)
+const db = new sqlite.Database(process.env.DB_URL || path.join(__dirname, 'sqlite', 'projet_recette.sqlite'))
+// à ce niveau, la base est vierge, on doit s'assurer de créer les tables
+const createTables = fs.readFileSync(path.join(__dirname, 'sqlite', 'script.sql'))
+db.exec(createTables.toString())
 
 // exeQuery appelle db.run. dans le callback on définit quoi faire en cas d'erreurs
 function exeQuery (query, values, callback) {
