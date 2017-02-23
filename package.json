@@ -5,11 +5,12 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon -e js,html,json,handlebars,css --watch  Html --watch . --watch pub index.js",
-    "test": "set DB_URL=:memory:&& mocha ./tests/*.js"
+    "test": "set DB_URL=:memory:&& mocha --compilers js:babbybel ./tests/*.js "
   },
   "author": "sandra",
   "license": "ISC",
   "dependencies": {
+    "babbybel": "^0.5.0",
     "body-parser": "^1.16.0",
     "eslint": "^3.14.1",
     "eslint-config-airbnb": "^14.0.0",
@@ -18,12 +19,13 @@
     "mysql": "^2.12.0",
     "node-static": "^0.7.9",
     "nodemon": "^1.11.0",
-    "qs": "^6.3.0",
+    "qs": "^6.3.1",
     "sqlite3": "^3.1.8"
   },
   "devDependencies": {
     "chai": "^3.5.0",
     "hippie": "^0.5.1",
-    "mocha": "^3.2.0"
+    "mocha": "^3.2.0",
+    "qs": "^6.3.1"
   }
 }

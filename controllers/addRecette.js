@@ -17,6 +17,7 @@ function addRecette (req, res) {
       let ingredients
       let quantites
       let unites
+      console.log(req.body)
       if (req.body.Ingrédient === undefined) { // j'exe addIngredient. si on a 0 ingrédient on veut que rien ne se fasse
         ingredients = []
         quantites = []
