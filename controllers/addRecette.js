@@ -2,7 +2,7 @@ const bodyParser = require('body-parser')
 const db = require('../db')
 
 function addRecette (req, res) {
-// on veut communiquer avec la base les valeurs étant dans la requete - donc récupérer les infos de la requete pour les envoyer à la base.
+  // on veut communiquer avec la base les valeurs étant dans la requete - donc récupérer les infos de la requete pour les envoyer à la base.
 
   // retourne une fonction qui prend 3 param.- req. http, res.http,callback
   // sert à extraire le body du reste.
@@ -26,7 +26,10 @@ function addRecette (req, res) {
         // j'exe addIngredients
         ingredients = req.body.Ingrédient
         quantites = req.body.Quantité
-        unites = req.body.Unité
+        unites = req.body.Unité.map((u) => {
+          if (u === '') { return null }
+          return u
+        })
       } else { // j'exe addIngredient. si on a qu'1 ingrédient on transforme la valeur en tableau et on met le résultat dans notre variable
         ingredients = [req.body.Ingrédient]
         quantites = [req.body.Quantité]
