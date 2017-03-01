@@ -1,11 +1,10 @@
-import { getRecipie } from '../db'
 import qs from 'qs'
+import {getRecipie} from '../db'
+// je mets{} car je n'utilise que cette constante. si j'utile tout le fichier, quand j'utilise la constante serv j'aurais mis '.server.serv'
+import {serv} from '../server'
 
 const hippie = require('hippie')
 const expect = require('chai').expect
-
-// index est sous entendu
-const serv = require('../')
 
 function stringify (data, fn) {
   fn(null, qs.stringify(data, {arrayFormat: 'repeat'}).toString('utf8'))
@@ -72,7 +71,7 @@ describe('when I post a recipe …', () => {
         expect(results.description).to.be.equal('mélanger tous les ingrédients et mettre au four')
       })
   })
-    it('returns 302 when the recipe is ok with only 1 ingredient with a quantity', () => {
+  it('returns 302 when the recipe is ok with only 1 ingredient with a quantity', () => {
     // comme nous sommes en asynchrone :return hippie et non hippie seul -comportement spécifique à mocha
     return hippie()
       .form()
@@ -106,7 +105,7 @@ describe('when I post a recipe …', () => {
       // expect(results.)
       })
   })
-    it('returns 302 when the recipe is ok with only 1 ingredient without a unity defined', () => {
+  it('returns 302 when the recipe is ok with only 1 ingredient without a unity defined', () => {
     // comme nous sommes en asynchrone :return hippie et non hippie seul -comportement spécifique à mocha
     return hippie()
       .form()
@@ -139,6 +138,6 @@ describe('when I post a recipe …', () => {
       // expect(results.)
       })
   })
-it('returns 302 when the recipe is ok with ingredients some of them including unité and one without unité')
-it('returns 302 when the recipe is ok with all ingredients without unité')
+  it('returns 302 when the recipe is ok with ingredients some of them including unité and one without unité')
+  it('returns 302 when the recipe is ok with all ingredients without unité')
 })

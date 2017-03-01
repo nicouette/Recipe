@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon -e js,html,json,handlebars,css --watch  Html --watch . --watch pub index.js",
-    "test": "set DB_URL=:memory:&& mocha --compilers js:babbybel ./tests/*.js "
+    "test": "set PORT=8090&&set DB_URL=:memory:&& mocha --compilers js:babbybel ./tests/*.js "
   },
   "author": "sandra",
   "license": "ISC",
