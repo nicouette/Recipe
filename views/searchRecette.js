@@ -8,11 +8,16 @@ function resultatByNom (req, res) {
   parseBody(req, res, () => {
     const name = req.body.Nom
     db.getRecipeByName(name, (results) => {
-      const context = {
-        lines: results,
-        title: 'Résultat de la recherche'
+      if (results.length === 0) {
+        // alors j'affiche la page "noresult"
+        template.noResultsPage(req, res)
+      } else {
+        const context = {
+          lines: results,
+          title: 'Résultat de la recherche'
+        }
+        template.resultsPage(req, res, context)
       }
-      template.resultsPage(req, res, context)
     }
     )
   })

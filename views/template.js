@@ -14,6 +14,7 @@ const addRecette = fs.readFileSync(path.join(__dirname, '..', 'templates', 'ajou
 const results = fs.readFileSync(path.join(__dirname, '..', 'templates', 'resultat.handlebars'))
 const recette = fs.readFileSync(path.join(__dirname, '..', 'templates', 'recette.handlebars'))
 const searchRecette = fs.readFileSync(path.join(__dirname, '..', 'templates', 'searchPage.handlebars'))
+const noResults = fs.readFileSync(path.join(__dirname, '..', 'templates', 'noResults.handlebars'))
 
 Handlebars.registerPartial('head', head.toString())
 Handlebars.registerPartial('nav', nav.toString())
@@ -53,6 +54,14 @@ function searchRecettePage (req, res) {
   pageToDisplay(req, res, searchRecetteTemplate, context)
 }
 
+const noResultsTemplate = Handlebars.compile(noResults.toString())
+function noResultsPage (req, res) {
+  const context = {
+    title: 'Pas de résultat'
+  }
+  pageToDisplay(req, res, noResultsTemplate, context)
+}
+
 const ResultTemplate = Handlebars.compile(results.toString())
 function resultsPage (req, res, context) {
   pageToDisplay(req, res, ResultTemplate, context)
@@ -72,4 +81,4 @@ function pageToDisplay (req, res, template, context) {
   res.end()
 }
 
-module.exports = { welcome, commentPage, addRecettePage, resultsPage, viewRecettePage, searchRecettePage}
+module.exports = { welcome, commentPage, addRecettePage, resultsPage, viewRecettePage, searchRecettePage, noResultsPage}
