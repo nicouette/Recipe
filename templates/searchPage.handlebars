@@ -1,0 +1,19 @@
+<html>
+{{> head}}
+
+<body>
+  <header>
+    {{> nav}}
+    <h1>Mon carnet de Recettes</h1>
+  </header>
+    <h3>Rechercher une recette</h3>
+    <!-- Que recherchez vous ?:-->
+    <form method="post" action="searchRecette">
+ <label for="Nom">Nom :<abbr title="Ce champ est obligatoire" autofocus>*</abbr></label>
+           <input type="text" name="Nom" id="Nom" maxlength="200" required />
+          <button type="submit">🔍</button></p>
+</form>
+    {{> footer}}
+</body>
+
+</html>

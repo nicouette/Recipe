@@ -13,12 +13,14 @@ const comment = fs.readFileSync(path.join(__dirname, '..', 'templates', 'addComm
 const addRecette = fs.readFileSync(path.join(__dirname, '..', 'templates', 'ajoutRecette.handlebars'))
 const results = fs.readFileSync(path.join(__dirname, '..', 'templates', 'resultat.handlebars'))
 const recette = fs.readFileSync(path.join(__dirname, '..', 'templates', 'recette.handlebars'))
+const searchRecette = fs.readFileSync(path.join(__dirname, '..', 'templates', 'searchPage.handlebars'))
 
 Handlebars.registerPartial('head', head.toString())
 Handlebars.registerPartial('nav', nav.toString())
 Handlebars.registerPartial('footer', footer.toString())
 
 // on utilise library qui va le mettre ready to be used - pas de résultats
+// context = ensemble des paramètres que je donne à handlebars, ici le title
 const welcomeTemplate = Handlebars.compile(index.toString())
 function welcome (req, res) {
   const context = {
@@ -43,10 +45,20 @@ function addRecettePage (req, res) {
   pageToDisplay(req, res, addRecetteTemplate, context)
 }
 
+const searchRecetteTemplate = Handlebars.compile(searchRecette.toString())
+function searchRecettePage (req, res) {
+  const context = {
+    title: 'Rechercher une Recette'
+  }
+  pageToDisplay(req, res, searchRecetteTemplate, context)
+}
+
 const ResultTemplate = Handlebars.compile(results.toString())
 function resultsPage (req, res, context) {
   pageToDisplay(req, res, ResultTemplate, context)
 }
+
+
 
 const viewRecetteTemplate = Handlebars.compile(recette.toString())
 function viewRecettePage (req, res, context) {
@@ -60,4 +72,4 @@ function pageToDisplay (req, res, template, context) {
   res.end()
 }
 
-module.exports = { welcome, commentPage, addRecettePage, resultsPage, viewRecettePage}
+module.exports = { welcome, commentPage, addRecettePage, resultsPage, viewRecettePage, searchRecettePage}

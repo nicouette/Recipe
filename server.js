@@ -2,12 +2,15 @@ const url = require('url')
 const statiq = require('node-static')
 
 const addRecette = require('./controllers/addRecette')
+const resultat = require('./views/resultat')
+
+const viewRecette = require('./views/viewRecette')
 const suppressionRecette = require('./controllers/suppressionRecette')
-const resultat = require('./controllers/resultat')
-const viewRecette = require('./controllers/viewRecette')
-const addComment = require('./controllers/addComments')
 const suppressionCommentaire = require('./controllers/removeComments')
-const template = require('./controllers/template')
+
+const addComment = require('./controllers/addComments')
+const resultatByNom = require('./views/searchRecette')
+const template = require('./views/template')
 
 // retrieve http module
 const http = require('http')
@@ -46,6 +49,10 @@ export function serv (req, res) {
     suppressionRecette(req, res, parsedUrl.query.id)
   } else if (parsedUrl.pathname === '/addComments') {
     addComment(req, res)
+  } else if (parsedUrl.pathname === '/rechercheRecette.html') {
+    template.searchRecettePage(req, res)
+  } else if (parsedUrl.pathname === '/searchRecette') {
+    resultatByNom(req, res)
   } else if (parsedUrl.pathname === '/addComment.html') {
     template.commentPage(req, res)
   } else if (parsedUrl.pathname === '/removeComments') {
@@ -63,4 +70,3 @@ export function serv (req, res) {
     }).resume()
   }
 }
-

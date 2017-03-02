@@ -7,7 +7,7 @@ function resultat (req, res) {
   db.getAllRecipies((results) => {
     const context = {
       lines: results,
-      title: 'Nouvelle Recette'
+      title: 'Liste des Recettes'
     }
     template.resultsPage(req, res, context)
   }
