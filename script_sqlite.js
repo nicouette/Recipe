@@ -32,14 +32,22 @@ function insertQuery (query, values, callback) {
 
 // je cree une fonction pour recuperer toutes les recettes - je l'appellerai dans index.js
 // callback permet de retourner les résultats
-
-function getAllRecipies (callback) {
-  exeQuery('select * from recettes', undefined, callback)
-}
-
-function getRecipeByName (nom, callback) {
-  // $nom:`%${nom}%`:une template string pour string dans laquelle je mets des paramètres pour aller chercher des valeurs des variables. pour paramètriser j'ai mis${}
-  exeQuery('select * from recettes where nom LIKE $nom', {$nom: `%${nom}%`}, callback)
+// $nom:`%${nom}%`:une template string pour string dans laquelle je mets des paramètres pour aller chercher des valeurs des variables. pour paramètriser j'ai mis${}
+// c'est compliqué
+function getRecipes (nom, type, callback) {
+  let query = 'select * from recettes'
+  let params = {}
+  if (nom !== '' && type !== '') {
+    query += ' where nom LIKE $nom AND type =$type'
+    params = {$nom: `%${nom}%`, $type: type}
+  } else if (type !== '') {
+    query += ' where type =$type'
+    params = {$type: type}
+  } else if (nom !== '') {
+    query += ' where nom LIKE $nom'
+    params = {$nom: `%${nom}%`}
+  }
+  exeQuery(query, params, callback)
 }
 
 // fonction pour récupérer une recette spécifique et pouvoir l'afficher
@@ -136,5 +144,4 @@ function removeComments ($id, callback) {
   exeQuery('delete from commentaires where id=$id', {$id}, callback)
 }
 
-module.exports = {
-getAllRecipies, getRecipie, addRecipie, addIngredient, addIngredients, addQuantiteUnite, addQuantitesUnites, removeRecipie, addComment, removeComments, getRecipeByName}
+module.exports = {getRecipie, addRecipie, addIngredient, addIngredients, addQuantiteUnite, addQuantitesUnites, removeRecipie, addComment, removeComments, getRecipes}

@@ -9,9 +9,28 @@
     <h3>Rechercher une recette</h3>
     <!-- Que recherchez vous ?:-->
     <form method="post" action="searchRecette">
- <label for="Nom">Nom :<abbr title="Ce champ est obligatoire" autofocus>*</abbr></label>
-           <input type="text" name="Nom" id="Nom" maxlength="200" required />
-          <button type="submit">🔍</button></p>
+ <label for="Nom">Nom :</label>
+           <input type="text" name="Nom" id="Nom" maxlength="200" />
+
+        <p>
+          <label for="Type">Type de recette : </label>
+          <select name="Type" id="Type">
+                    <option value="" selected="selected"></option>
+                    <option value="apéritif">Apéritif</option>
+                    <option value="entrée">Entrée</option>
+                    <option value="viande">Viande</option>
+                    <option value="poisson">Poisson</option>
+                    <option value="légume">Légume</option>
+                    <option value="pâte">Pâte</option>
+                    <option value="riz">Riz</option>
+                    <option value="fromage">Fromage</option>
+                    <option value="dessert">Dessert</option>
+                    <option value="biscuit">Biscuit</option>
+                    </select>
+        </p>
+<p>
+            <button type="submit">🔍</button></p>
+</p>
 </form>
     {{> footer}}
 </body>

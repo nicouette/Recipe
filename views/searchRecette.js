@@ -4,10 +4,11 @@ const bodyParser = require('body-parser')
 
 const parseBody = bodyParser.urlencoded({extended: false})
 
-function resultatByNom (req, res) {
+function resultatRecherche (req, res) {
   parseBody(req, res, () => {
-    const name = req.body.Nom
-    db.getRecipeByName(name, (results) => {
+    const nom = req.body.Nom
+    const type = req.body.Type
+    db.getRecipes(nom, type, (results) => {
       if (results.length === 0) {
         // alors j'affiche la page "noresult"
         template.noResultsPage(req, res)
@@ -22,4 +23,4 @@ function resultatByNom (req, res) {
     )
   })
 }
-module.exports = resultatByNom
+module.exports = resultatRecherche
