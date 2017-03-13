@@ -29,7 +29,7 @@ describe('when I post a recipe …', () => {
       .serializer(stringify)
       .app(serv)
       // .base('http://localhost:8080')
-      .post('/addRecette')
+      .post('/addRecipe')
       .send({
         Nom: 'tarte',
         Description: 'mélanger tous les ingrédients et mettre au four',
@@ -67,7 +67,7 @@ describe('when I post a recipe …', () => {
       .form()
       .app(serv)
       // .base('http://localhost:8080')
-      .post('/addRecette')
+      .post('/addRecipe')
       .send({Nom: 'tarte aux pommes', Description: 'mélanger tous les ingrédients et mettre au four', Type: 'dessert'})
       .expectStatus(302)
       .end()
@@ -94,7 +94,7 @@ describe('when I post a recipe …', () => {
       .form()
       .app(serv)
       // .base('http://localhost:8080')
-      .post('/addRecette')
+      .post('/addRecipe')
       .send({
         Nom: 'pâte feuilleté',
         Description: 'mélanger tous les ingrédients et mettre au four',
@@ -131,7 +131,7 @@ describe('when I post a recipe …', () => {
       .form()
       .app(serv)
       // .base('http://localhost:8080')
-      .post('/addRecette')
+      .post('/addRecipe')
       .send({
         Nom: 'pâte feuilleté',
         Description: 'mélanger tous les ingrédients et mettre au four',
@@ -168,7 +168,7 @@ describe('when I post a recipe …', () => {
       .serializer(stringify)
       .app(serv)
       // .base('http://localhost:8080')
-      .post('/addRecette')
+      .post('/addRecipe')
       .send({
         Nom: 'tarte à la tomate',
         Description: 'mélanger tous les ingrédients et mettre au four',
@@ -209,7 +209,7 @@ describe('when I post a recipe …', () => {
       .serializer(stringify)
       .app(serv)
       // .base('http://localhost:8080')
-      .post('/addRecette')
+      .post('/addRecipe')
       .send({
         Nom: 'tarte salée',
         Description: 'mélanger tous les ingrédients et mettre au four',

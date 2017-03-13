@@ -10,29 +10,30 @@
   </header>
   <p>
 
-    <form method="post" action="addRecette">
+    <form method="post" action="addRecipe">
       <section>
         <p>
           <button type="submit">Ajouter la recette</button></p>
         <p>
           <label for="Nom">Nom :<abbr title="Ce champ est obligatoire" autofocus>*</abbr></label>
 
-          <input type="text" name="Nom" id="Nom" maxlength="200" required />
+          <input type="text" name="Nom" id="Nom" maxlength="200" value="{{recette.nom}}" required />
         </p>
         <p>
           <label for="Description">Description : </label>
-          <textarea name="Description" id="Description" rows="10" cols="50" placeholder="Entrez la description de votre recette."></textarea>
+          <textarea name="Description" id="Description" rows="10" cols="50" placeholder="Entrez la description de votre recette.">{{recette.description}}</textarea>
         </p>
         <p>
-          <label for="Type">Type de recette : </label>
-          <select name="Type" id="Type">
+
+             <label for="Type">Type de recette : </label>
+            <select name="Type" id="Type">
                     <option value="apéritif">Apéritif</option>
                     <option value="entrée">Entrée</option>
                     <option value="viande">Viande</option>
                     <option value="poisson">Poisson</option>
                     <option value="légume">Légume</option>
                     <option value="pâte">Pâte</option>
-                    <option value="riz">Riz</option>
+                    {{addOptionType "riz"}}
                     <option value="fromage">Fromage</option>
                     <option value="dessert">Dessert</option>
                     <option value="biscuit">Biscuit</option>
@@ -50,26 +51,26 @@
 </form>
 </p>
 <script>
-    let ingredientDivId = 1
-    function addLine() {
-      const ingredientDiv = document.getElementById('ingredient')
-      const ingredientNew = document.createElement('p')
-      ingredientNew.setAttribute('id', 'ingredientDiv' + ingredientDivId)
-      ingredientNew.innerHTML =
-        `<label for="Ingrédient${ingredientDivId}">Ingrédient : </label>
+  let ingredientDivId = 1
+  function addLine() {
+    const ingredientDiv = document.getElementById('ingredient')
+    const ingredientNew = document.createElement('p')
+    ingredientNew.setAttribute('id', 'ingredientDiv' + ingredientDivId)
+    ingredientNew.innerHTML =
+      `<label for="Ingrédient${ingredientDivId}">Ingrédient : </label>
                 <input type="text" name="Ingrédient" id="Ingrédient${ingredientDivId}"/>
                 <label for="Quantité${ingredientDivId}">Quantité : </label>
                 <input type="number" step="any" name="Quantité" id="Quantité${ingredientDivId}" required/>
                 <label for="Unité${ingredientDivId}">Unité : </label>
                 <input type="text" name="Unité" id="Unité${ingredientDivId}" />
                  <input type="button" name="Retrait" id="Retrait${ingredientDivId}" value="-" onClick="removeLine('ingredientDiv${ingredientDivId}')"/>`
-      ingredientDiv.appendChild(ingredientNew)
-      ingredientDivId++
-    }
-    function removeLine(selectedIngredientId) {
-      document.getElementById(selectedIngredientId).remove()
-    }
-  </script>
+    ingredientDiv.appendChild(ingredientNew)
+    ingredientDivId++
+  }
+  function removeLine(selectedIngredientId) {
+    document.getElementById(selectedIngredientId).remove()
+  }
+</script>
 </body>
 {{> footer}}
 
