@@ -5,7 +5,9 @@ const addRecette = require('./controllers/addRecette')
 const resultat = require('./views/resultat')
 
 const viewRecette = require('./views/viewRecette')
-const suppressionRecette = require('./controllers/suppressionRecette')
+const suppressionRecette = require('./controllers/removeRecipe')
+const editRecipe = require('./views/editRecipe')
+
 const suppressionCommentaire = require('./controllers/removeComments')
 
 const addComment = require('./controllers/addComments')
@@ -42,9 +44,11 @@ export function serv (req, res) {
     viewRecette(req, res, parsedUrl.query.id)
   } else if (parsedUrl.pathname === '/addRecette') {
     addRecette(req, res)
+  } else if (parsedUrl.pathname === '/editRecipe') {
+    editRecipe(req, res, parsedUrl.query.id)
   } else if (parsedUrl.pathname === '/ajoutRecette.html') {
-    template.addRecettePage(req, res)
-  } else if (parsedUrl.pathname === '/suppressionRecette') {
+    template.addRecettePage(req, res, {title: 'Nouvelle Recette'})
+  } else if (parsedUrl.pathname === '/removeRecipe') {
     // parsedUrl.query.id permet de récupérer l'id de la recette
     suppressionRecette(req, res, parsedUrl.query.id)
   } else if (parsedUrl.pathname === '/addComments') {

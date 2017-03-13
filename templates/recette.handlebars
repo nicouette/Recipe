@@ -2,17 +2,20 @@
 <html>
 
 {{> head}}
+
 <body>
   <!--on met lien url avec .html car il s'agit d'une page static. on veut récupérer l'id et le type=recette-->
   <header>
-{{> nav}}
+    {{> nav}}
     <h1>Mon carnet de Recettes</h1>
   </header>
   <section>
     <p>
       <!-- on définit l'id en question de la recette que l'on souhaite supprimer-->
       <!-- TODO: a remplacer ca par un lien stylé bouton-->
-      <button type="submit" value="Supprimer la recette" onclick="location.href='/suppressionRecette?id={{recette.id}}'"> Supprimer la recette</button>
+      <button type="submit" value="Remove Recipe" onclick="location.href='/removeRecipe?id={{recette.id}}'"> Supprimer la recette</button>
+      <button type="submit" value="Éditer la recette" onclick="location.href='/editRecipe?id={{recette.id}}'"> Éditer la recette</button>
+</p>
 </p>
 <h3>Recette de {{recette.nom}}</h3>
 
@@ -33,12 +36,12 @@
     {{#each recette.comments}}
     <li>{{titre}}: {{description}}
       <div class="buttonMoins">
-      <input type="button" name="Retrait" id="Retrait" value="-" onClick="location.href='/removeComments?id={{id}}&recetteId={{objet_id}}'"/></li>
+        <input type="button" name="Retrait" id="Retrait" value="-" onClick="location.href='/removeComments?id={{id}}&recetteId={{objet_id}}'"/></li>
 {{/each}}
 </ul>
 </p>
 <p>
-    <input type="button" value="Ajouter un commentaire" onclick="location.href='/addComment.html?id={{recette.id}}&type=recette'"/>
+  <input type="button" value="Ajouter un commentaire" onclick="location.href='/addComment.html?id={{recette.id}}&type=recette'"/>
 </p>
 
 
