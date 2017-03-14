@@ -1,7 +1,7 @@
 const db = require('../db')
 
 
-function suppressionCommentaire (req, res, id, objetId) {
+function removeComments (req, res, id, objetId) {
   db.removeComments(id, () => {
     // console.log(req.body)
     res.writeHead(302, {
@@ -13,4 +13,4 @@ function suppressionCommentaire (req, res, id, objetId) {
   )
 }
 
-module.exports = suppressionCommentaire
+module.exports = removeComments
