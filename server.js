@@ -1,7 +1,7 @@
 const url = require('url')
 const statiq = require('node-static')
 
-const addRecette = require('./controllers/addRecette')
+const addRecette = require('./controllers/addRecipe')
 const resultat = require('./views/resultat')
 
 const viewRecette = require('./views/viewRecette')
@@ -42,7 +42,7 @@ export function serv (req, res) {
   // avec parsedUrl je n'ai que /recette qui est pris en compte dans url et pas l'id (search)
   } else if (parsedUrl.pathname === '/recette') {
     viewRecette(req, res, parsedUrl.query.id)
-  } else if (parsedUrl.pathname === '/addRecette') {
+  } else if (parsedUrl.pathname === '/addRecipe') {
     addRecette(req, res)
   } else if (parsedUrl.pathname === '/editRecipe') {
     editRecipe(req, res, parsedUrl.query.id)

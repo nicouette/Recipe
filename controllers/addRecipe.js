@@ -1,7 +1,7 @@
 const bodyParser = require('body-parser')
 const db = require('../db')
 
-function addRecette (req, res) {
+function addRecipe (req, res) {
   // on veut communiquer avec la base les valeurs étant dans la requete - donc récupérer les infos de la requete pour les envoyer à la base.
 
   // retourne une fonction qui prend 3 param.- req. http, res.http,callback
@@ -53,4 +53,4 @@ function addRecette (req, res) {
   )
 }
 
-module.exports = addRecette
+module.exports = addRecipe

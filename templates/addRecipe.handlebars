@@ -27,16 +27,16 @@
 
              <label for="Type">Type de recette : </label>
             <select name="Type" id="Type">
-                    <option value="apéritif">Apéritif</option>
-                    <option value="entrée">Entrée</option>
-                    <option value="viande">Viande</option>
-                    <option value="poisson">Poisson</option>
-                    <option value="légume">Légume</option>
-                    <option value="pâte">Pâte</option>
-                    {{addOptionType "riz"}}
-                    <option value="fromage">Fromage</option>
-                    <option value="dessert">Dessert</option>
-                    <option value="biscuit">Biscuit</option>
+                    {{{addOptionType recette.type 'apéritif' 'Apéritif'}}}
+                    {{{addOptionType recette.type 'entrée' 'Entrée'}}}
+                    {{{addOptionType recette.type 'viande' 'Viande'}}}
+                    {{{addOptionType recette.type 'poisson' 'Poisson'}}}
+                    {{{addOptionType recette.type 'légume' 'Légume'}}}
+                    {{{addOptionType recette.type 'pâte' 'Pâte'}}}
+                    {{{addOptionType recette.type 'riz' 'Riz'}}}
+                    {{{addOptionType recette.type 'fromage' 'Fromage'}}}
+                    {{{addOptionType recette.type 'dessert' 'Dessert'}}}
+                    {{{addOptionType recette.type 'biscuit' 'Biscuit'}}}
                     </select>
         </p>
 

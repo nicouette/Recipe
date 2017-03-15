@@ -9,8 +9,8 @@ const head = fs.readFileSync(path.join(__dirname, '..', 'templates', 'head.handl
 const nav = fs.readFileSync(path.join(__dirname, '..', 'templates', 'nav.handlebars'))
 const footer = fs.readFileSync(path.join(__dirname, '..', 'templates', 'footer.handlebars'))
 const index = fs.readFileSync(path.join(__dirname, '..', 'templates', 'welcome.handlebars'))
-const comment = fs.readFileSync(path.join(__dirname, '..', 'templates', 'addComment.handlebars'))
-const addRecette = fs.readFileSync(path.join(__dirname, '..', 'templates', 'ajoutRecette.handlebars'))
+const comment = fs.readFileSync(path.join(__dirname, '..', 'templates', 'addComments.handlebars'))
+const addRecette = fs.readFileSync(path.join(__dirname, '..', 'templates', 'addRecipe.handlebars'))
 const results = fs.readFileSync(path.join(__dirname, '..', 'templates', 'resultat.handlebars'))
 const recette = fs.readFileSync(path.join(__dirname, '..', 'templates', 'recette.handlebars'))
 const searchRecette = fs.readFileSync(path.join(__dirname, '..', 'templates', 'searchPage.handlebars'))
@@ -19,6 +19,14 @@ const noResults = fs.readFileSync(path.join(__dirname, '..', 'templates', 'noRes
 Handlebars.registerPartial('head', head.toString())
 Handlebars.registerPartial('nav', nav.toString())
 Handlebars.registerPartial('footer', footer.toString())
+
+Handlebars.registerHelper('addOptionType', (recetteType, value, label) => {
+  console.log('ICI',recetteType)
+  if (recetteType === value) {
+    return `<option selected value="${value}">${label}</option>`
+  } return `<option value="${value}">${label}</option>`
+}
+)
 
 // on utilise library qui va le mettre ready to be used - pas de résultats
 // context = ensemble des paramètres que je donne à handlebars, ici le title
@@ -39,10 +47,7 @@ function commentPage (req, res) {
 }
 
 const addRecetteTemplate = Handlebars.compile(addRecette.toString())
-function addRecettePage (req, res) {
-  const context = {
-    title: 'Nouvelle Recette'
-  }
+function addRecettePage (req, res, context) {
   pageToDisplay(req, res, addRecetteTemplate, context)
 }
 
@@ -67,12 +72,10 @@ function resultsPage (req, res, context) {
   pageToDisplay(req, res, ResultTemplate, context)
 }
 
-
-
 const viewRecetteTemplate = Handlebars.compile(recette.toString())
 function viewRecettePage (req, res, context) {
   pageToDisplay(req, res, viewRecetteTemplate, context)
-  // console.log(recette.nom)
+// console.log(recette.nom)
 }
 
 function pageToDisplay (req, res, template, context) {

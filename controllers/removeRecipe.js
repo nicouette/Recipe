@@ -1,7 +1,7 @@
 const db = require('../db')
 
 
-function suppressionRecette (req, res, id) {
+function removeRecipe (req, res, id) {
   db.removeRecipie(id, () => {
     // console.log(req.body)
     res.writeHead(302, {
@@ -13,4 +13,4 @@ function suppressionRecette (req, res, id) {
   )
 }
 
-module.exports = suppressionRecette
+module.exports = removeRecipe

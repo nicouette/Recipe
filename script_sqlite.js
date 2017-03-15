@@ -54,10 +54,11 @@ function getRecipes (nom, type, callback) {
 function getRecipie (id, callback) {
   const results = {}
   // on veut échapper le resultat de la query (caractères spéciaux) alors on utilise id=:id, {id} qui est le paramètre Values de exeQuery l.4
-  exeQuery('select id, nom, description from recettes where id =$id', {$id: id}, (resSelectedRecette) => {
+  exeQuery('select id, nom, description, type from recettes where id =$id', {$id: id}, (resSelectedRecette) => {
     results.id = resSelectedRecette[0].id
     results.nom = resSelectedRecette[0].nom
     results.description = resSelectedRecette[0].description
+    results.type = resSelectedRecette[0].type
     // query pour pouvoir afficher les ingrédients, quantité et unité associés
     exeQuery('select nom,quantité,unité from ingredients join recettes_ingredients on id=ingredient_id where recette_id=$id', {$id: id}, (resSelectedIngredient) => {
       results.ingredients = resSelectedIngredient
