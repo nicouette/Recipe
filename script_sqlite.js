@@ -125,6 +125,10 @@ function addQuantitesUnites (recetteId, nomIngredients, quantites, unites, callb
   }
 }
 
+function updateRecipe ($id, $nom, $description, $type, callback) {
+  exeQuery('update recettes set nom=$nom,description=$description,type=$type where id=$id', {$nom, $description, $type, $id}, callback)
+}
+
 function removeRecipie ($id, callback) {
   exeQuery('delete from recettes_ingredients where recette_id=$id', {$id}, () => {
     // console.log('tu as perdu')
@@ -145,4 +149,4 @@ function removeComments ($id, callback) {
   exeQuery('delete from commentaires where id=$id', {$id}, callback)
 }
 
-module.exports = {getRecipie, addRecipie, addIngredient, addIngredients, addQuantiteUnite, addQuantitesUnites, removeRecipie, addComment, removeComments, getRecipes}
+module.exports = {getRecipie, addRecipie, addIngredient, addIngredients, addQuantiteUnite, addQuantitesUnites, removeRecipie, addComment, removeComments, getRecipes, updateRecipe}

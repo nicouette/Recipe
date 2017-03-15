@@ -2,17 +2,17 @@ const url = require('url')
 const statiq = require('node-static')
 
 const addRecette = require('./controllers/addRecipe')
-const resultat = require('./views/resultat')
+const suppressionRecette = require('./controllers/removeRecipe')
+const suppressionCommentaire = require('./controllers/removeComments')
+const addComment = require('./controllers/addComments')
+const updateRecipe = require('./controllers/updateRecipe')
 
 const viewRecette = require('./views/viewRecette')
-const suppressionRecette = require('./controllers/removeRecipe')
+const resultat = require('./views/resultat')
 const editRecipe = require('./views/editRecipe')
-
-const suppressionCommentaire = require('./controllers/removeComments')
-
-const addComment = require('./controllers/addComments')
 const resultatByNom = require('./views/searchRecette')
 const template = require('./views/template')
+
 
 // retrieve http module
 const http = require('http')
@@ -48,6 +48,8 @@ export function serv (req, res) {
     editRecipe(req, res, parsedUrl.query.id)
   } else if (parsedUrl.pathname === '/ajoutRecette.html') {
     template.addRecettePage(req, res, {title: 'Nouvelle Recette'})
+  } else if (parsedUrl.pathname === '/updateRecipe') {
+    updateRecipe(req, res, parsedUrl.query.id)
   } else if (parsedUrl.pathname === '/removeRecipe') {
     // parsedUrl.query.id permet de récupérer l'id de la recette
     suppressionRecette(req, res, parsedUrl.query.id)

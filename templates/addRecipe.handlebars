@@ -10,8 +10,9 @@
   </header>
   <p>
 
-
-    <form method="post" action="addRecipe">
+{{! ceci est un commentaire qui ne se verra pas dans le html}}
+{{! dans action je mets le lien vers la page js qui exe l'action'}}
+    <form method="post" action="{{#if recette}}updateRecipe?id={{recette.id}}{{else}}addRecipe{{/if}}">
 
       <section>
         <p>
