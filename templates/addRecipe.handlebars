@@ -10,10 +10,13 @@
   </header>
   <p>
 
+
     <form method="post" action="addRecipe">
+
       <section>
         <p>
-          <button type="submit">Ajouter la recette</button></p>
+
+          <button type="submit">{{#if recette}}Mettre à jour{{else}}Ajouter la recette{{/if}}</button></p>
         <p>
           <label for="Nom">Nom :<abbr title="Ce champ est obligatoire" autofocus>*</abbr></label>
 
