@@ -13,7 +13,7 @@ function addRecipe (req, res) {
     // console.log(req.body)
     // function() = function de mon callback -je veux que ca termine le requete http donc res.write et res.end
     // je mets Mysql devant le nom de la fonction que j'appelle car la fonction a été défini dans un autre module définit par la variable Mysql
-    db.addRecipie(req.body.Nom, req.body.Description, req.body.Type, (recetteId) => {
+    db.addRecipe(req.body.Nom, req.body.Description, req.body.Type, (recetteId) => {
       let ingredients
       let quantites
       let unites

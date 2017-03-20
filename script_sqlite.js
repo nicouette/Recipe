@@ -51,7 +51,7 @@ function getRecipes (nom, type, callback) {
 }
 
 // fonction pour récupérer une recette spécifique et pouvoir l'afficher
-function getRecipie (id, callback) {
+function getRecipe (id, callback) {
   const results = {}
   // on veut échapper le resultat de la query (caractères spéciaux) alors on utilise id=:id, {id} qui est le paramètre Values de exeQuery l.4
   exeQuery('select id, nom, description, type from recettes where id =$id', {$id: id}, (resSelectedRecette) => {
@@ -72,7 +72,7 @@ function getRecipie (id, callback) {
     )
   })
 }
-function addRecipie ($nom, $description, $type, callback) {
+function addRecipe ($nom, $description, $type, callback) {
   // exeQuery a 2 parameters: la query - ici un insert et le callback -pour me dire que c'est fini
   // quand dans le code on rencontre nom, description , type , on remplace par ce qu'il y a dans le paramètre values soit les variables
   insertQuery('insert into Recettes (nom,description,type) Values($nom,$description,$type)', {$nom, $description, $type}, (insertId) => {
@@ -149,4 +149,4 @@ function removeComments ($id, callback) {
   exeQuery('delete from commentaires where id=$id', {$id}, callback)
 }
 
-module.exports = {getRecipie, addRecipie, addIngredient, addIngredients, addQuantiteUnite, addQuantitesUnites, removeRecipie, addComment, removeComments, getRecipes, updateRecipe}
+module.exports = {getRecipe, addRecipe, addIngredient, addIngredients, addQuantiteUnite, addQuantitesUnites, removeRecipie, addComment, removeComments, getRecipes, updateRecipe}
