@@ -1,5 +1,6 @@
 tests:
+  image: node:7-alpine
   script:
     - npm install
-    - npm tests
+    - npm t
 
