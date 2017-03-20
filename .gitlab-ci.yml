@@ -1,0 +1,5 @@
+tests:
+  script:
+    - npm install
+    - npm tests
+
