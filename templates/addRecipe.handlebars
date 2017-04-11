@@ -4,33 +4,53 @@
 {{> head}}
 
 <body>
-  <header>
-    {{> nav}}
-    <h1>Mon carnet de Recettes</h1>
-  </header>
-  <p>
+  <script>
+    let ingredientDivId = 1
+    function addLine(ingredientName = '', ingredientQuantité = '', ingredientUnité = '') {
+      const ingredientDiv = document.getElementById('ingredient')
+      const ingredientNew = document.createElement('p')
+      ingredientNew.setAttribute('id', 'ingredientDiv' + ingredientDivId)
+      ingredientNew.innerHTML =
+        `<label for="Ingrédient${ingredientDivId}">Ingrédient : </label>
+                <input type="text" name="Ingrédient" id="Ingrédient${ingredientDivId}" value="${ingredientName}"/>
+                <label for="Quantité${ingredientDivId}">Quantité : </label>
+                <input type="number" step="any" name="Quantité" id="Quantité${ingredientDivId}" value="${ingredientQuantité}" required/>
+                <label for="Unité${ingredientDivId}">Unité : </label>
+                <input type="text" name="Unité" id="Unité${ingredientDivId}" value="${ingredientUnité}"/>
+                 <input type="button" name="Retrait" id="Retrait${ingredientDivId}" value="-" onClick="removeLine('ingredientDiv${ingredientDivId}')"/>`
+      ingredientDiv.appendChild(ingredientNew)
+      ingredientDivId++
+    }
+    function removeLine(selectedIngredientId) {
+      document.getElementById(selectedIngredientId).remove()
+    }
+  </script>
+<header>
+  {{> nav}}
+  <h1>Mon carnet de Recettes</h1>
+</header>
+<p>
 
-{{! ceci est un commentaire qui ne se verra pas dans le html}}
-{{! dans action je mets le lien vers la page js qui exe l'action'}}
-    <form method="post" action="{{#if recette}}updateRecipe?id={{recette.id}}{{else}}addRecipe{{/if}}">
+  {{! ceci est un commentaire qui ne se verra pas dans le html}} {{! dans action je mets le lien vers la page js qui exe l'action'}}
+  <form method="post" action="{{#if recette}}updateRecipe?id={{recette.id}}{{else}}addRecipe{{/if}}">
 
-      <section>
-        <p>
+    <section>
+      <p>
 
-          <button type="submit">{{#if recette}}Mettre à jour{{else}}Ajouter la recette{{/if}}</button></p>
-        <p>
-          <label for="Nom">Nom :<abbr title="Ce champ est obligatoire" autofocus>*</abbr></label>
+        <button type="submit">{{#if recette}}Mettre à jour{{else}}Ajouter la recette{{/if}}</button></p>
+      <p>
+        <label for="Nom">Nom :<abbr title="Ce champ est obligatoire" autofocus>*</abbr></label>
 
-          <input type="text" name="Nom" id="Nom" maxlength="200" value="{{recette.nom}}" required />
-        </p>
-        <p>
-          <label for="Description">Description : </label>
-          <textarea name="Description" id="Description" rows="10" cols="50" placeholder="Entrez la description de votre recette.">{{recette.description}}</textarea>
-        </p>
-        <p>
+        <input type="text" name="Nom" id="Nom" maxlength="200" value="{{recette.nom}}" required />
+      </p>
+      <p>
+        <label for="Description">Description : </label>
+        <textarea name="Description" id="Description" rows="10" cols="50" placeholder="Entrez la description de votre recette.">{{recette.description}}</textarea>
+      </p>
+      <p>
 
-             <label for="Type">Type de recette : </label>
-            <select name="Type" id="Type">
+        <label for="Type">Type de recette : </label>
+        <select name="Type" id="Type">
                     {{{addOptionType recette.type 'apéritif' 'Apéritif'}}}
                     {{{addOptionType recette.type 'entrée' 'Entrée'}}}
                     {{{addOptionType recette.type 'viande' 'Viande'}}}
@@ -42,39 +62,25 @@
                     {{{addOptionType recette.type 'dessert' 'Dessert'}}}
                     {{{addOptionType recette.type 'biscuit' 'Biscuit'}}}
                     </select>
-        </p>
+      </p>
 
-        <p>
-          <input type="button" name="Ajout" id="Ajout" value="Ajouter un ingrédient" onClick="addLine()"/></p>
+      <p>
+        <input type="button" name="Ajout" id="Ajout" value="Ajouter un ingrédient" onClick="addLine()"/></p>
 </section>
 <div id="ingredient">
-  <!--si je garde ligne suivante alors j'ai 1 ligne ingrédient par défaut. nous choisisons de ne pas avoir de ligne ingredient par défaut-->
-  <!--script>addLine()</script-->
+  <!--si je garde ligne suivante alors j'ai 1 ligne ingrédient par défaut. nous choisissons de ne pas avoir de ligne ingredient par défaut-->
+  <script>
+  {{#each recette.ingredients}}
+   addLine("{{nom}}", {{quantité}}, "{{unité}}")
+  {{/each}}
+
+  </script>
+
 </div>
 
 </form>
 </p>
-<script>
-  let ingredientDivId = 1
-  function addLine() {
-    const ingredientDiv = document.getElementById('ingredient')
-    const ingredientNew = document.createElement('p')
-    ingredientNew.setAttribute('id', 'ingredientDiv' + ingredientDivId)
-    ingredientNew.innerHTML =
-      `<label for="Ingrédient${ingredientDivId}">Ingrédient : </label>
-                <input type="text" name="Ingrédient" id="Ingrédient${ingredientDivId}"/>
-                <label for="Quantité${ingredientDivId}">Quantité : </label>
-                <input type="number" step="any" name="Quantité" id="Quantité${ingredientDivId}" required/>
-                <label for="Unité${ingredientDivId}">Unité : </label>
-                <input type="text" name="Unité" id="Unité${ingredientDivId}" />
-                 <input type="button" name="Retrait" id="Retrait${ingredientDivId}" value="-" onClick="removeLine('ingredientDiv${ingredientDivId}')"/>`
-    ingredientDiv.appendChild(ingredientNew)
-    ingredientDivId++
-  }
-  function removeLine(selectedIngredientId) {
-    document.getElementById(selectedIngredientId).remove()
-  }
-</script>
+
 </body>
 {{> footer}}
 

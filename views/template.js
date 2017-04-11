@@ -49,6 +49,7 @@ function commentPage (req, res) {
 const addRecetteTemplate = Handlebars.compile(addRecette.toString())
 function addRecettePage (req, res, context) {
   pageToDisplay(req, res, addRecetteTemplate, context)
+  console.log(context.recette.ingredients)
 }
 
 const searchRecetteTemplate = Handlebars.compile(searchRecette.toString())
