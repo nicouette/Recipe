@@ -37,7 +37,8 @@
     <section>
       <p>
 
-        <button type="submit">{{#if recette}}Mettre à jour{{else}}Ajouter la recette{{/if}}</button></p>
+        <button type="submit" style="font-weight: bold;">{{#if recette}}Mettre à jour{{else}}Ajouter la recette{{/if}}</button>
+        </p>
       <p>
         <label for="Nom">Nom :<abbr title="Ce champ est obligatoire" autofocus>*</abbr></label>
 
@@ -65,7 +66,7 @@
       </p>
 
       <p>
-        <input type="button" name="Ajout" id="Ajout" value="Ajouter un ingrédient" onClick="addLine()"/></p>
+        <input type="button" style="font-weight: bold;" name="Ajout" id="Ajout" value="Ajouter un ingrédient" onClick="addLine()"/></p>
 </section>
 <div id="ingredient">
   <!--si je garde ligne suivante alors j'ai 1 ligne ingrédient par défaut. nous choisissons de ne pas avoir de ligne ingredient par défaut-->

@@ -31,6 +31,7 @@ nav
     width: 740px;
     text-align: right;
     text-transform: uppercase;
+    font-style:#fff;
 }
 
 nav ul
@@ -148,24 +149,30 @@ section input[type="button"]
  {
 
 	font:'Slabo 27px', serif;
-	background:#f5f5f5;
+	background: #f9eafe;
 	color:#555;
-	border-radius:2px;
+	border-radius:15px;
   width:200px;
-	border:1px solid #ccc;
+	border:medium solid #ccc;
 	box-shadow:1px 1px 3px #999;
+  text-shadow: 0px 1px 0px rgba( 255, 255, 255, 0.2);
+  text-align: center;
+  cursor:pointer;
 }
 
 section button[type="submit"]
  {
 
-	font:bold 13px Arial;
-	background:#f5f5f5;
+	font:'Slabo 27px', serif;
+	background: #f9eafe;
 	color:#555;
-	border-radius:2px;
+	border-radius:15px;
   width:200px;
-	border:1px solid #ccc;
+	border:medium solid #ccc;
 	box-shadow:1px 1px 3px #999;
+  text-shadow: 0px 1px 0px rgba( 255, 255, 255, 0.2);
+  text-align: center;
+  cursor:pointer;
 }
 
 .buttonMoins
