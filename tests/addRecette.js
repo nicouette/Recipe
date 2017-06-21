@@ -1,5 +1,5 @@
 import qs from 'qs'
-import { getRecipie } from '../db'
+import { getRecipe } from '../db'
 // je mets{} car je n'utilise que cette constante. si j'utile tout le fichier, quand j'utilise la constante serv j'aurais mis '.server.serv'
 import { serv } from '../server'
 
@@ -43,7 +43,7 @@ describe('when I post a recipe …', () => {
       .then((res) => {
         const recetteId = res.headers.location.split('=')[1]
         return new Promise((resolve, reject) => {
-          getRecipie(recetteId, (results) => {
+          getRecipe(recetteId, (results) => {
             console.log(results)
             resolve(results)
           })
@@ -74,7 +74,7 @@ describe('when I post a recipe …', () => {
       .then((res) => {
         const recetteId = res.headers.location.split('=')[1]
         return new Promise((resolve, reject) => {
-          getRecipie(recetteId, (results) => {
+          getRecipe(recetteId, (results) => {
             resolve(results)
           })
         })
@@ -108,7 +108,7 @@ describe('when I post a recipe …', () => {
       .then((res) => {
         const recetteId = res.headers.location.split('=')[1]
         return new Promise((resolve, reject) => {
-          getRecipie(recetteId, (results) => {
+          getRecipe(recetteId, (results) => {
             console.log(results)
             resolve(results)
           })
@@ -144,7 +144,7 @@ describe('when I post a recipe …', () => {
       .then((res) => {
         const recetteId = res.headers.location.split('=')[1]
         return new Promise((resolve, reject) => {
-          getRecipie(recetteId, (results) => {
+          getRecipe(recetteId, (results) => {
             console.log(results)
             resolve(results)
           })
@@ -182,7 +182,7 @@ describe('when I post a recipe …', () => {
       .then((res) => {
         const recetteId = res.headers.location.split('=')[1]
         return new Promise((resolve, reject) => {
-          getRecipie(recetteId, (results) => {
+          getRecipe(recetteId, (results) => {
             console.log(results)
             resolve(results)
           })
@@ -223,7 +223,7 @@ describe('when I post a recipe …', () => {
       .then((res) => {
         const recetteId = res.headers.location.split('=')[1]
         return new Promise((resolve, reject) => {
-          getRecipie(recetteId, (results) => {
+          getRecipe(recetteId, (results) => {
             console.log(results)
             resolve(results)
           })
